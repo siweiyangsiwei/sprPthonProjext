@@ -58,12 +58,24 @@ class Ui_mainWindow(object):
         self.principle_ppt = QtWidgets.QTextBrowser(self.experiment_principle)
         self.principle_ppt.setGeometry(QtCore.QRect(60, 90, 311, 251))
         self.principle_ppt.setObjectName("principle_ppt")
+        self.pre_principle_page = QtWidgets.QPushButton(self.experiment_principle)
+        self.pre_principle_page.setGeometry(QtCore.QRect(410, 440, 81, 31))
+        self.pre_principle_page.setObjectName("pre_principle_page")
+        self.next_principle_page = QtWidgets.QPushButton(self.experiment_principle)
+        self.next_principle_page.setGeometry(QtCore.QRect(490, 440, 81, 31))
+        self.next_principle_page.setObjectName("next_principle_page")
         self.tabWidget.addTab(self.experiment_principle, "")
         self.experiment_steps = QtWidgets.QWidget()
         self.experiment_steps.setObjectName("experiment_steps")
         self.steps_ppt = QtWidgets.QTextBrowser(self.experiment_steps)
         self.steps_ppt.setGeometry(QtCore.QRect(90, 140, 291, 221))
         self.steps_ppt.setObjectName("steps_ppt")
+        self.pre_steps_page = QtWidgets.QPushButton(self.experiment_steps)
+        self.pre_steps_page.setGeometry(QtCore.QRect(410, 440, 81, 31))
+        self.pre_steps_page.setObjectName("pre_steps_page")
+        self.next_steps_page = QtWidgets.QPushButton(self.experiment_steps)
+        self.next_steps_page.setGeometry(QtCore.QRect(490, 440, 81, 31))
+        self.next_steps_page.setObjectName("next_steps_page")
         self.tabWidget.addTab(self.experiment_steps, "")
         self.test = QtWidgets.QWidget()
         self.test.setObjectName("test")
@@ -71,6 +83,10 @@ class Ui_mainWindow(object):
         self.data_processing = QtWidgets.QWidget()
         self.data_processing.setObjectName("data_processing")
         self.tabWidget.addTab(self.data_processing, "")
+        self.start_or_finish_learn = QtWidgets.QPushButton(self.centralwidget)
+        self.start_or_finish_learn.setGeometry(QtCore.QRect(680, 20, 111, 41))
+        self.start_or_finish_learn.setIconSize(QtCore.QSize(16, 16))
+        self.start_or_finish_learn.setObjectName("start_or_finish_learn")
         mainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(mainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
@@ -81,7 +97,7 @@ class Ui_mainWindow(object):
         mainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(mainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
@@ -102,12 +118,17 @@ class Ui_mainWindow(object):
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">显示实验原理的ppt</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.pre_principle_page.setText(_translate("mainWindow", "上一页"))
+        self.next_principle_page.setText(_translate("mainWindow", "下一页"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.experiment_principle), _translate("mainWindow", "实验原理"))
         self.steps_ppt.setHtml(_translate("mainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">显示实验步骤的ppt</p></body></html>"))
+        self.pre_steps_page.setText(_translate("mainWindow", "上一页"))
+        self.next_steps_page.setText(_translate("mainWindow", "下一页"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.experiment_steps), _translate("mainWindow", "实验步骤"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.test), _translate("mainWindow", "测试"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.data_processing), _translate("mainWindow", "数据处理"))
+        self.start_or_finish_learn.setText(_translate("mainWindow", "开始本章的学习"))
