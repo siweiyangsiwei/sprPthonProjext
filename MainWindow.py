@@ -4,6 +4,8 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 from main_window import Ui_mainWindow
 
+import sqlTools
+
 
 class MainWindow(QMainWindow, Ui_mainWindow):
     # 记录当前正在学习的章节
@@ -41,6 +43,16 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         # 设置默认的实验原理和实验步骤的图片(默认第一张)
         self.set_principle_img(1)
         self.set_steps_img(1)
+
+        # 设置默认的测试的题目(默认本章第一题)
+        self.set_test_question()
+
+        # 将所有test模块中的label设置为自动换行
+        self.qustion.setWordWrap(True)
+        self.section_A.setWordWrap(True)
+        self.section_B.setWordWrap(True)
+        self.section_C.setWordWrap(True)
+        self.section_D.setWordWrap(True)
 
         # 章节的点击触发改变章节事件
         self.chapter_one.clicked.connect(lambda: self.chapter_click(1))
@@ -189,3 +201,22 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.set_steps_img(self.nowStepImg)
         if self.nowStepImg <= 1:
             self.pre_steps_page.setEnabled(False)
+
+    # 设置test部分的题目
+    def set_test_question(self):
+        question_list = sqlTools.get_question_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])
+        question = question_list[0]
+        section_a = ""
+        section_b = ""
+        section_c = ""
+        section_d = ""
+        if question[3] != "":
+            section_a = "A." + question[3]
+            section_b = "B." + question[4]
+            section_c = "C." + question[5]
+            section_d = "D." + question[6]
+        self.qustion.setText(question[1])
+        self.section_A.setText(section_a)
+        self.section_B.setText(section_b)
+        self.section_C.setText(section_c)
+        self.section_D.setText(section_d)
