@@ -92,14 +92,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>40</y>
+      <x>200</x>
+      <y>10</y>
       <width>1381</width>
       <height>1121</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="experiment_principle">
      <attribute name="title">
@@ -193,6 +193,144 @@
      <attribute name="title">
       <string>测试</string>
      </attribute>
+     <widget class="QLineEdit" name="answer">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>1000</y>
+        <width>261</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="answer_text">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>1010</y>
+        <width>341</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>你的答案是:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="qustion">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>751</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>35</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>问题在这里</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>49</x>
+        <y>519</y>
+        <width>1301</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="section_A">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="section_B">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="section_C">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="section_D">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="next_test_question">
+      <property name="geometry">
+       <rect>
+        <x>1210</x>
+        <y>1030</y>
+        <width>160</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>下一题</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pre_test_question">
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>1030</y>
+        <width>160</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>上一题</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="data_processing">
      <attribute name="title">
