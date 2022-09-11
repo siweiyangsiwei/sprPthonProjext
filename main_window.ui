@@ -305,6 +305,32 @@
        </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="next_test_question">
+      <property name="geometry">
+       <rect>
+        <x>1210</x>
+        <y>1030</y>
+        <width>160</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>下一题</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pre_test_question">
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>1030</y>
+        <width>160</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>上一题</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="data_processing">
      <attribute name="title">

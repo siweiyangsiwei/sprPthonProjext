@@ -4,7 +4,7 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 from main_window import Ui_mainWindow
 
-import sqlTools
+import SqlTools
 
 
 class MainWindow(QMainWindow, Ui_mainWindow):
@@ -19,6 +19,15 @@ class MainWindow(QMainWindow, Ui_mainWindow):
 
     # 记录当前显示的实验步骤的图片
     nowStepImg = 1
+
+    # 记录当前正在回答的题目
+    nowTestQuestion = 1
+
+    # 保存当前章节的所有test题目
+    questionList = []
+
+    # 记录是否结束了测试
+    answerList = []
 
     chapterNameList = ["第一章", "第二章", "第三章", "第四章", "第五章", "第六章", "第七章", "第八章", "第九章"]
     chapterBtnNameList = ["chapter_one", "chapter_two", "chapter_three", "chapter_four", "chapter_five", "chapter_six",
@@ -39,10 +48,18 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.next_steps_page.setEnabled(False)
         self.pre_principle_page.setEnabled(False)
         self.next_principle_page.setEnabled(False)
+        self.pre_test_question.setEnabled(False)
+        self.next_test_question.setEnabled(False)
+
+        # 初始化禁用test部分的答题框
+        self.answer.setEnabled(False)
 
         # 设置默认的实验原理和实验步骤的图片(默认第一张)
         self.set_principle_img(1)
         self.set_steps_img(1)
+
+        # 获取本章的test题目
+        self.get_test_question()
 
         # 设置默认的测试的题目(默认本章第一题)
         self.set_test_question()
@@ -80,6 +97,12 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         # 点击实验步骤上一页按钮触发pre_steps_page_click事件
         self.pre_steps_page.clicked.connect(self.pre_steps_page_click)
 
+        # 点击test部分下一题触发next_test_question_click事件
+        self.next_test_question.clicked.connect(self.next_test_question_click)
+
+        # 点击test部分上一题触发pre_test_question_click事件
+        self.pre_test_question.clicked.connect(self.pre_test_question_click)
+
     # 章节改变的事件
     def chapter_click(self, num):
         # 章节改变前去掉之前的字体颜色
@@ -100,10 +123,18 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.set_principle_img(1)
         # 显示当前章节的实验步骤(默认只显示当前章节的第一张)
         self.set_steps_img(1)
+        # 显示当前章节的test部分的题目(默认值显示当前章节的第一题)
+        self.nowTestQuestion = 1
+        self.get_test_question()
+        self.set_test_question()
+        # 清空test输入框的内容
+        self.answer.setText("")
+        # 清空回答
+        self.answerList = []
 
     # 开始学习或结束学习按钮触发的事件
     def start_or_finish_learn_click(self):
-        self.findChild(QPushButton,self.chapterBtnNameList[self.nowChapter - 1]).setEnabled(False)
+        self.findChild(QPushButton, self.chapterBtnNameList[self.nowChapter - 1]).setEnabled(False)
         # 判断当前是否在学习并通过该状态调用不同函数
         if self.startLearnOrNot:
             self.startLearnOrNot = False
@@ -127,6 +158,16 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         # 开放下一页按钮
         self.next_principle_page.setEnabled(True)
         self.next_steps_page.setEnabled(True)
+        self.next_test_question.setEnabled(True)
+        # 清空test部分的答题框
+        self.answer.setText("")
+        # 开放test部分的答题框
+        self.answer.setEnabled(True)
+        # 默认获取焦点
+        self.answer.setFocus()
+        self.nowTestQuestion = 1
+        # 恢复下一题按钮的文字
+        self.next_test_question.setText("下一题")
 
     # 结束学习按钮的点击触发事件
     def finish_learn(self):
@@ -141,6 +182,10 @@ class MainWindow(QMainWindow, Ui_mainWindow):
             self.next_steps_page.setEnabled(False)
             self.pre_principle_page.setEnabled(False)
             self.next_principle_page.setEnabled(False)
+            self.pre_test_question.setEnabled(False)
+            self.next_test_question.setEnabled(False)
+            # 禁用掉test部分的答题框
+            self.answer.setEnabled(False)
 
     # 设置实验原理图片的函数
     def set_principle_img(self, index):
@@ -194,7 +239,7 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         if self.nowStepImg >= len(steps_img_num):
             self.next_steps_page.setEnabled(False)
 
-    # 点击实验不凑的上一页触发的事件(实现同实验原理)
+    # 点击实验的步骤上一页触发的事件(实现同实验原理)
     def pre_steps_page_click(self):
         self.nowStepImg -= 1
         self.next_steps_page.setEnabled(True)
@@ -202,10 +247,61 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         if self.nowStepImg <= 1:
             self.pre_steps_page.setEnabled(False)
 
+    # 点击test部分下一题触发的事件
+    def next_test_question_click(self):
+        # 判断是否已经填入答案
+        if self.answer.text() == "":
+            print("请先填写答案再进入下一题")
+            return
+        # 判断是否为结束测试按钮
+        if self.nowTestQuestion >= len(self.questionList):
+            # 将答案保存到answerList中
+            self.answerList.append(self.answer.text().upper())
+            # 调用答题结束的函数
+            self.finish_test()
+            # 禁用上一题和下一题按钮
+            self.next_test_question.setEnabled(False)
+            self.pre_test_question.setEnabled(False)
+        else:
+            # 保存答案(先判断该题是否填过,填过则更新答案,没填过则加入)
+            if self.nowTestQuestion > len(self.answerList):
+                self.answerList.append(self.answer.text().upper())
+            else:
+                self.answerList[self.nowTestQuestion - 1] = self.answer.text().upper()
+            self.nowTestQuestion += 1
+            # 判断是否已经填过答案
+            if self.nowTestQuestion <= len(self.answerList):
+                self.answer.setText(self.answerList[self.nowTestQuestion - 1])
+            else:
+                # 清空输入框
+                self.answer.setText("")
+            # 输入框自动获取焦点
+            self.answer.setFocus()
+            self.pre_test_question.setEnabled(True)
+            self.set_test_question()
+            # 判断是否为最后一题
+            if self.nowTestQuestion >= len(self.questionList):
+                self.next_test_question.setText("结束测试")
+
+    # 点击test部分上一题触发的事件
+    def pre_test_question_click(self):
+        self.nowTestQuestion -= 1
+        self.next_test_question.setEnabled(True)
+        self.set_test_question()
+        # 点击了上一题那么上一题一定填入了答案,需要取出对应答案并填入输入框中
+        self.answer.setText(self.answerList[self.nowTestQuestion - 1])
+        # 判断是否为第一题
+        if self.nowTestQuestion <= 1:
+            self.pre_test_question.setEnabled(False)
+            self.next_test_question.setText("下一题")
+
+    # 获取test部分的题目
+    def get_test_question(self):
+        self.questionList = SqlTools.get_question_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])
+
     # 设置test部分的题目
     def set_test_question(self):
-        question_list = sqlTools.get_question_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])
-        question = question_list[0]
+        question = self.questionList[self.nowTestQuestion - 1]
         section_a = ""
         section_b = ""
         section_c = ""
@@ -220,3 +316,9 @@ class MainWindow(QMainWindow, Ui_mainWindow):
         self.section_B.setText(section_b)
         self.section_C.setText(section_c)
         self.section_D.setText(section_d)
+
+    # 答题结束的函数
+    def finish_test(self):
+        print("你的答案是: " + str(self.answerList))
+        print("正确答案是: " + str(SqlTools.get_correct_answer_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])))
+        print("答题结束")
