@@ -123,3 +123,13 @@ class Ui_mainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.test), _translate("mainWindow", "测试"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.data_processing), _translate("mainWindow", "数据处理"))
         self.start_or_finish_learn.setText(_translate("mainWindow", "开始本章的学习"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    mainWindow = QtWidgets.QMainWindow()
+    ui = Ui_mainWindow()
+    ui.setupUi(mainWindow)
+    mainWindow.show()
+    sys.exit(app.exec_())

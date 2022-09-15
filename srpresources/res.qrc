@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="images">
+    <file>scut2.png</file>
+    <file>scut.png</file>
+  </qresource>
+  <qresource prefix="icons">
+    <file>max.png</file>
+    <file>close.png</file>
+    <file>mini.png</file>
+  </qresource>
+</RCC>
