@@ -65,7 +65,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.set_test_question()
 
         # 将所有test模块中的label设置为自动换行
-        self.qustion.setWordWrap(True)
+        self.question.setWordWrap(True)
         self.section_A.setWordWrap(True)
         self.section_B.setWordWrap(True)
         self.section_C.setWordWrap(True)
@@ -102,6 +102,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 点击test部分上一题触发pre_test_question_click事件
         self.pre_test_question.clicked.connect(self.pre_test_question_click)
+
+        self.shutdown.clicked.connect(lambda: self.close())
+        self.mini.clicked.connect(lambda: self.showMinimized())
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -311,7 +314,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             section_b = "B." + question[4]
             section_c = "C." + question[5]
             section_d = "D." + question[6]
-        self.qustion.setText(question[1])
+        self.question.setText(question[1])
         self.section_A.setText(section_a)
         self.section_B.setText(section_b)
         self.section_C.setText(section_c)

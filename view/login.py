@@ -122,7 +122,6 @@ class Ui_MainWindow(object):
         self.user_lineedit.setPlaceholderText(_translate("MainWindow", "账号："))
         self.pwd_lineedit.setPlaceholderText(_translate("MainWindow", "密码："))
         self.pushButton.setText(_translate("MainWindow", "登 录"))
-import res_rc
 
 
 if __name__ == "__main__":
