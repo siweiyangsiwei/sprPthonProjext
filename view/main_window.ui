@@ -575,7 +575,7 @@ QPushBotton:hover{
                   </widget>
                   <widget class="QWidget" name="test">
                    <attribute name="title">
-                    <string>页</string>
+                    <string>实验测试</string>
                    </attribute>
                    <layout class="QVBoxLayout" name="verticalLayout_9">
                     <item>
@@ -684,7 +684,7 @@ QPushBotton:hover{
                          <string notr="true">background-color: rgb(255, 255, 255);</string>
                         </property>
                         <property name="text">
-                         <string>第九章</string>
+                         <string>上一题</string>
                         </property>
                        </widget>
                       </item>
@@ -700,7 +700,7 @@ QPushBotton:hover{
                          <string notr="true">background-color: rgb(255, 255, 255);</string>
                         </property>
                         <property name="text">
-                         <string>第九章</string>
+                         <string>下一题</string>
                         </property>
                        </widget>
                       </item>

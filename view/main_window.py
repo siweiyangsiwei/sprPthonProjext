@@ -454,8 +454,8 @@ class Ui_MainWindow(object):
         self.section_C.setText(_translate("MainWindow", "TextLabel"))
         self.section_D.setText(_translate("MainWindow", "TextLabel"))
         self.answer_text.setText(_translate("MainWindow", "你的答案是:"))
-        self.pre_test_question.setText(_translate("MainWindow", "第九章"))
-        self.next_test_question.setText(_translate("MainWindow", "第九章"))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.test), _translate("MainWindow", "页"))
+        self.pre_test_question.setText(_translate("MainWindow", "上一题"))
+        self.next_test_question.setText(_translate("MainWindow", "下一题"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.test), _translate("MainWindow", "实验测试"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.data_processing), _translate("MainWindow", "数据处理"))
 import res_rc
