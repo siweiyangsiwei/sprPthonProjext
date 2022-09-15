@@ -2,6 +2,7 @@
 ## 依赖信息
 目前最近版需要的依赖为 PyQt5 以及 PyQt-tool
 可以使用如下命令安装
+
 PyQt5:
 ```commandline
 pip install PyQt5

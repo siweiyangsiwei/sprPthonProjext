@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
-from MainWindow import MainWindow
-from login import Ui_MainWindow
+from controllers.MainWindow import MainWindow
+from view.login import Ui_MainWindow
 
 
 class LoginWindow(QMainWindow, Ui_MainWindow):

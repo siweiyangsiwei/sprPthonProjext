@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from LoginWindow import LoginWindow
+from controllers.LoginWindow import LoginWindow
 import sys
 
 if __name__ == '__main__':

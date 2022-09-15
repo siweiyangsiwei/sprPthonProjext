@@ -2,9 +2,9 @@ import os.path
 
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QPushButton
-from main_window import Ui_MainWindow
+from view.main_window import Ui_MainWindow
 
-import SqlTools
+from tools import SqlTools
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -320,5 +320,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     # 答题结束的函数
     def finish_test(self):
         print("你的答案是: " + str(self.answerList))
-        print("正确答案是: " + str(SqlTools.get_correct_answer_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])))
+        print("正确答案是: " + str(
+            SqlTools.get_correct_answer_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])))
         print("答题结束")
