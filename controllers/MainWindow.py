@@ -194,7 +194,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def set_principle_img(self, index):
         self.principle_img.setText("")
         img = os.path.abspath(
-            ('resources/Image/principle/chapter' + str(self.nowChapter) + '/principle' + str(index) + '.jpg'))
+            ('resources/Image/principle/chapter' + str(self.nowChapter) + '/principle' + str(index) + '.png'))
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.principle_img.setScaledContents(True)
         self.principle_img.setPixmap(image)
@@ -203,7 +203,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def set_steps_img(self, index):
         self.steps_img.setText("")
         img = os.path.abspath(
-            ('resources/Image/steps/chapter' + str(self.nowChapter) + '/step' + str(index) + '.jpg'))
+            ('resources/Image/steps/chapter' + str(self.nowChapter) + '/step' + str(index) + '.png'))
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.steps_img.setScaledContents(True)
         self.steps_img.setPixmap(image)

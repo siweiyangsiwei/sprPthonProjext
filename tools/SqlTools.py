@@ -18,3 +18,5 @@ def get_correct_answer_by_chapter(chapter):
     for question in data:
         correct_answer.append(question[7])
     return correct_answer
+
+
