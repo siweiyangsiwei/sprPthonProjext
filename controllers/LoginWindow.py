@@ -13,6 +13,6 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
         user = self.user_lineedit.text()
         pwd = self.pwd_lineedit.text()
         if user == '123' and pwd == '123':
-            main_window = MainWindow()
-            main_window.show()
+            self.main_window = MainWindow()
+            self.main_window.show()
             self.close()
