@@ -37,6 +37,10 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         super(ExperimentWindow, self).__init__()
         self.setupUi(self)
 
+        self.pre_test_question.setEnabled(False)
+        self.pre_steps_page.setEnabled(False)
+        self.pre_principle_page.setEnabled(False)
+
         # 将所有test模块中的label设置为自动换行
         self.question.setWordWrap(True)
         self.section_A.setWordWrap(True)
