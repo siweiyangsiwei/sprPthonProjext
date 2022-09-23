@@ -3,7 +3,7 @@ import os.path
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 from view.experiment import Ui_ExperimentWindow
-
+from controllers.EmailWindow import EmailWindow
 from tools import SqlTools
 
 
@@ -69,6 +69,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.shutdown.clicked.connect(lambda: self.close())
         self.mini.clicked.connect(lambda: self.showMinimized())
         self.back.clicked.connect(self.back_main)
+        self.send_email.clicked.connect(self.open_emailWindow)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -253,7 +254,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def receive_main(self, mainWindow):
         self.mainWindow = mainWindow
 
-    # 返回主界面
+    # 返回主窗口
     def back_main(self):
         self.mainWindow.show()
         self.close()
+
+    def open_emailWindow(self):
+        email_window = EmailWindow()
+        email_window.show()

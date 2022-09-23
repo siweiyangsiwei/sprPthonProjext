@@ -63,6 +63,9 @@ class Ui_ExperimentWindow(object):
         self.horizontalLayout_11.addWidget(self.title)
         spacerItem = QtWidgets.QSpacerItem(218, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_11.addItem(spacerItem)
+        self.send_email = QtWidgets.QPushButton(self.frame_2)
+        self.send_email.setObjectName("send_email")
+        self.horizontalLayout_11.addWidget(self.send_email)
         self.frame_4 = QtWidgets.QFrame(self.frame_2)
         self.frame_4.setMinimumSize(QtCore.QSize(81, 41))
         self.frame_4.setStyleSheet("QPushBotton{\n"
@@ -438,6 +441,7 @@ class Ui_ExperimentWindow(object):
         _translate = QtCore.QCoreApplication.translate
         ExperimentWindow.setWindowTitle(_translate("ExperimentWindow", "ExperimentWindow"))
         self.title.setText(_translate("ExperimentWindow", "化工实验模拟系统"))
+        self.send_email.setText(_translate("ExperimentWindow", "发邮件"))
         self.start_or_finish_learn.setText(_translate("ExperimentWindow", "开始本章学习"))
         self.chapter_one.setText(_translate("ExperimentWindow", "第一章"))
         self.chapter_two.setText(_translate("ExperimentWindow", "第二章"))

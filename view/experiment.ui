@@ -121,6 +121,13 @@ font: 16pt &quot;华文行楷&quot;;
              </spacer>
             </item>
             <item>
+             <widget class="QPushButton" name="send_email">
+              <property name="text">
+               <string>发邮件</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QFrame" name="frame_4">
               <property name="minimumSize">
                <size>
