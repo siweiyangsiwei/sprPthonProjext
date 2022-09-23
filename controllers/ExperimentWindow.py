@@ -37,53 +37,12 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         super(ExperimentWindow, self).__init__()
         self.setupUi(self)
 
-        # 设置默认的窗口名(默认第一章)
-        self.setWindowTitle(self.chapterNameList[0])
-
-        # 设置默认当前章节的字体颜色为红色(默认第一章)
-        # self.chapter_one.setStyleSheet('''QPushButton{color:red}''')
-
-        # 初始化禁用掉所有的上一页下一页按钮
-        self.pre_steps_page.setEnabled(False)
-        self.next_steps_page.setEnabled(False)
-        self.pre_principle_page.setEnabled(False)
-        self.next_principle_page.setEnabled(False)
-        self.pre_test_question.setEnabled(False)
-        self.next_test_question.setEnabled(False)
-
-        # 初始化禁用test部分的答题框
-        self.answer.setEnabled(False)
-
-        # 设置默认的实验原理和实验步骤的图片(默认第一张)
-        self.set_principle_img(1)
-        self.set_steps_img(1)
-
-        # 获取本章的test题目
-        self.get_test_question()
-
-        # 设置默认的测试的题目(默认本章第一题)
-        self.set_test_question()
-
         # 将所有test模块中的label设置为自动换行
         self.question.setWordWrap(True)
         self.section_A.setWordWrap(True)
         self.section_B.setWordWrap(True)
         self.section_C.setWordWrap(True)
         self.section_D.setWordWrap(True)
-
-        # 章节的点击触发改变章节事件
-        self.chapter_one.clicked.connect(lambda: self.chapter_click(1))
-        self.chapter_two.clicked.connect(lambda: self.chapter_click(2))
-        self.chapter_three.clicked.connect(lambda: self.chapter_click(3))
-        self.chapter_four.clicked.connect(lambda: self.chapter_click(4))
-        self.chapter_five.clicked.connect(lambda: self.chapter_click(5))
-        self.chapter_six.clicked.connect(lambda: self.chapter_click(6))
-        self.chapter_seven.clicked.connect(lambda: self.chapter_click(7))
-        self.chapter_eight.clicked.connect(lambda: self.chapter_click(8))
-        self.chapter_nine.clicked.connect(lambda: self.chapter_click(9))
-
-        # 开始学习按钮的点击触发start_or_finish_learn_click事件
-        self.start_or_finish_learn.clicked.connect(self.start_or_finish_learn_click)
 
         # 点击实验原理下一页按钮触发next_principle_page_click事件
         self.next_principle_page.clicked.connect(self.next_principle_page_click)
@@ -109,13 +68,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
     # 章节改变的事件
     def chapter_click(self, num):
-        # 章节改变前去掉之前的字体颜色
-        # self.findChild(QPushButton, self.chapterBtnNameList[self.nowChapter - 1]).setStyleSheet(
-        #     '''QPushButton{color:gray}''')
+
         self.nowChapter = num
-        # 章节改变后变换字体颜色
-        # self.findChild(QPushButton, self.chapterBtnNameList[self.nowChapter - 1]).setStyleSheet(
-        #     '''QPushButton{color:red}''')
+
         # 设置窗口的Title为当前章节名
         self.setWindowTitle(self.chapterNameList[num - 1])
 
@@ -136,33 +91,8 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 清空回答
         self.answerList = []
 
-    # 开始学习或结束学习按钮触发的事件
-    def start_or_finish_learn_click(self):
-        self.findChild(QPushButton, self.chapterBtnNameList[self.nowChapter - 1]).setEnabled(False)
-        # 判断当前是否在学习并通过该状态调用不同函数
-        if self.startLearnOrNot:
-            self.startLearnOrNot = False
-            self.start_or_finish_learn.setText("开始当前章节的学习")
-            self.finish_learn()
-        else:
-            self.startLearnOrNot = True
-            self.start_or_finish_learn.setText("结束当前章节的学习")
-            self.start_learn()
-
     # 开始学习按钮的点击触发事件
     def start_learn(self):
-        # 获取当前开始学习章节对应的PushButton对象
-        btn = self.findChild(QPushButton, self.chapterBtnNameList[self.nowChapter - 1])
-        # 禁用掉除当前章节的其他章节的PushButton
-        for chapterBtnName in self.chapterBtnNameList:
-            if chapterBtnName == btn.objectName():
-                continue
-            self.findChild(QPushButton, chapterBtnName).setEnabled(False)
-
-        # 开放下一页按钮
-        self.next_principle_page.setEnabled(True)
-        self.next_steps_page.setEnabled(True)
-        self.next_test_question.setEnabled(True)
         # 清空test部分的答题框
         self.answer.setText("")
         # 开放test部分的答题框
@@ -177,19 +107,6 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def finish_learn(self):
         # TODO 这里需要设置一个确定是否结束学习的弹窗
         finish = True
-        if finish:
-            # 解禁章节按钮
-            for chapterBtnName in self.chapterBtnNameList:
-                self.findChild(QPushButton, chapterBtnName).setEnabled(True)
-            # 禁用掉所有的上一页下一页按钮
-            self.pre_steps_page.setEnabled(False)
-            self.next_steps_page.setEnabled(False)
-            self.pre_principle_page.setEnabled(False)
-            self.next_principle_page.setEnabled(False)
-            self.pre_test_question.setEnabled(False)
-            self.next_test_question.setEnabled(False)
-            # 禁用掉test部分的答题框
-            self.answer.setEnabled(False)
 
     # 设置实验原理图片的函数
     def set_principle_img(self, index):
@@ -329,7 +246,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         print("答题结束")
 
     # 接收主窗口，下面用于返回主窗口
-    def receive_main(self,mainWindow):
+    def receive_main(self, mainWindow):
         self.mainWindow = mainWindow
 
     # 返回主界面

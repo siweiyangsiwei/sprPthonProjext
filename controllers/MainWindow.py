@@ -27,6 +27,10 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         item_index = self.treeWidget.currentIndex().row()
         experiment_window = ExperimentWindow()
         experiment_window.show()
+        # 这里去调用一下experiment_window的start_learn()方法,进行实验内容的初始化
+        experiment_window.start_learn()
+        # 调用一下chapter_click(self, num)方法进行章节的初始化,其中num为当前章节的索引,从1开始
+        experiment_window.chapter_click(item_index + 1)
         experiment_window.receive_main(self)
         self.close()
 
