@@ -11,6 +11,16 @@ PyQt5-tools:
 ```commandline
 pip install PyQt5-tools
 ```
+
+python-docx
+```commandline
+pip install python-docx
+```
+
+pywin32
+```commandline
+pip install pywin32
+```
 ## 入口函数
 本项目的入口函数为`main.py`
 
