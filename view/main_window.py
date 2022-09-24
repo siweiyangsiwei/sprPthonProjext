@@ -193,6 +193,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.tab_4)
         self.label.setGeometry(QtCore.QRect(340, 30, 111, 111))
         self.label.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.label.setStyleSheet("image: url(:/icons/user.png);")
         self.label.setText("")
         self.label.setScaledContents(False)
         self.label.setObjectName("label")
@@ -248,3 +249,4 @@ class Ui_MainWindow(object):
         self.label_time.setText(_translate("MainWindow", "学习总时长："))
         self.button_view.setText(_translate("MainWindow", "查看“实验安全”测验结果"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "我的"))
+import res_rc

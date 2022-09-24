@@ -11,27 +11,27 @@ class MainWindow(QMainWindow,Ui_MainWindow):
 
     def run(self):
         # 双击打开实验窗口
-        self.treeWidget.itemDoubleClicked.connect(self.open_ExWin)
+        self.treeWidget.itemDoubleClicked.connect(self.open_ExpWin)
         # “实验选择”中根据文字数量自动调整第一列宽度
         self.treeWidget.resizeColumnToContents(0)
         # 用户头像
         self.label.setPixmap(QtGui.QPixmap("srpresources/user.png"))
         self.label.setScaledContents(True)
 
-    def open_ExWin(self):
+    def open_ExpWin(self):
         # 获取选中的实验
         global selected_item
         selected_item = self.treeWidget.currentItem()
         # 实验所处行的索引,可用来查找实验文件
         global item_index
         item_index = self.treeWidget.currentIndex().row()
-        experiment_window = ExperimentWindow()
-        experiment_window.show()
-        # 这里去调用一下experiment_window的start_learn()方法,进行实验内容的初始化
-        experiment_window.start_learn()
+        self.exp_window = ExperimentWindow()
+        self.exp_window.show()
+        # 这里去调用一下exp_window的start_learn()方法,进行实验内容的初始化
+        self.exp_window.start_learn()
         # 调用一下chapter_click(self, num)方法进行章节的初始化,其中num为当前章节的索引,从1开始
-        experiment_window.chapter_click(item_index + 1)
-        experiment_window.receive_main(self)
+        self.exp_window.chapter_click(item_index + 1)
+        self.exp_window.receive_main(self)
         self.close()
 
     def update_time(self, hour, min, sec):
