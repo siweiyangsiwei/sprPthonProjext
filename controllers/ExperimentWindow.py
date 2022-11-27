@@ -1,5 +1,4 @@
 import os.path
-
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 from view.experiment import Ui_ExperimentWindow
@@ -15,9 +14,14 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 记录是否已经开始当前章节的学习
     startLearnOrNot = False
 
+    # 记录当前显示的实验目的的图片
+    nowPurposeImg = 1
+    # 记录当前显示的实验任务的图片
+    nowTaskImg = 1
     # 记录当前显示的实验原理的图片
     nowPrincipleImg = 1
-
+    # 记录当前显示的实验装置的图片
+    nowEquipmentImg = 1
     # 记录当前显示的实验步骤的图片
     nowStepImg = 1
 
@@ -39,8 +43,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.setupUi(self)
 
         self.pre_test_question.setEnabled(False)
+        self.pre_purpose_page.setEnabled(False)
+        self.pre_tasks_page.setEnabled(False)
         self.pre_steps_page.setEnabled(False)
         self.pre_principle_page.setEnabled(False)
+        self.pre_equipment_page.setEnabled(False)
 
         # 将所有test模块中的label设置为自动换行
         self.question.setWordWrap(True)
@@ -49,12 +56,30 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.section_C.setWordWrap(True)
         self.section_D.setWordWrap(True)
 
+        # 点击实验目的下一页按钮触发next_purpose_page_click事件
+        self.next_purpose_page.clicked.connect(self.next_purpose_page_click)
+
+        # 点击实验目的上一页按钮触发pre_purpose_page_click事件
+        self.pre_purpose_page.clicked.connect(self.pre_purpose_page_click)
+
+        # 点击实验任务下一页按钮触发next_tasks_page_click事件
+        self.next_tasks_page.clicked.connect(self.next_tasks_page_click)
+
+        # 点击实验任务上一页按钮触发pre_tasks_page_click事件
+        self.pre_tasks_page.clicked.connect(self.pre_tasks_page_click)
+        
         # 点击实验原理下一页按钮触发next_principle_page_click事件
         self.next_principle_page.clicked.connect(self.next_principle_page_click)
 
         # 点击实验原理上一页按钮触发pre_principle_page_click事件
         self.pre_principle_page.clicked.connect(self.pre_principle_page_click)
 
+        # 点击实验装置下一页按钮触发next_equipment_page_click事件
+        self.next_equipment_page.clicked.connect(self.next_equipment_page_click)
+
+        # 点击实验装置上一页按钮触发pre_equipment_page_click事件
+        self.pre_equipment_page.clicked.connect(self.pre_equipment_page_click)
+        
         # 点击实验步骤下一页按钮触发next_steps_page_click事件
         self.next_steps_page.clicked.connect(self.next_steps_page_click)
 
@@ -81,12 +106,21 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 设置窗口的Title为当前章节名
         self.setWindowTitle(self.chapterNameList[num - 1])
 
-        # 章节改变将当前实验原理和实验步骤图片恢复为1
+        # 章节改变将各个部分的图片恢复为1
+        self.nowPurposeImg = 1
+        self.nowTaskImg = 1
         self.nowPrincipleImg = 1
+        self.nowEquipmentImg = 1
         self.nowStepImg = 1
 
+        # 显示当前章节的实验目的(默认只显示当前章节的第一张)
+        self.set_purpose_img(1)
+        # 显示当前章节的实验任务(默认只显示当前章节的第一张)
+        self.set_tasks_img(1)
         # 显示当前章节的实验原理(默认只显示当前章节的第一张)
         self.set_principle_img(1)
+        # 显示当前章节的实验装置(默认只显示当前章节的第一张)
+        self.set_equipment_img(1)
         # 显示当前章节的实验步骤(默认只显示当前章节的第一张)
         self.set_steps_img(1)
         # 显示当前章节的test部分的题目(默认值显示当前章节的第一题)
@@ -115,6 +149,33 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # TODO 这里需要设置一个确定是否结束学习的弹窗
         finish = True
 
+    # 设置实目的图片的函数
+    def set_purpose_img(self, index):
+        self.principle_img.setText("")
+        img = os.path.abspath(
+            ('resources/Image/purpose/chapter' + str(self.nowChapter) + '/purpose' + str(index) + '.png'))
+        image = QtGui.QPixmap(img).scaled(11182, 1182)
+        self.purpose_img.setScaledContents(True)
+        self.purpose_img.setPixmap(image)
+        # 页数为1时禁用下一页
+        total_img_num = len(os.listdir('resources/Image/purpose/chapter' + str(self.nowChapter)))
+        if total_img_num == 1:
+            self.next_purpose_page.setEnabled(False)
+
+    # 设置实验任务图片的函数
+    def set_tasks_img(self, index):
+        self.tasks_img.setText("")
+        img = os.path.abspath(
+            ('resources/Image/tasks/chapter' + str(self.nowChapter) + '/task' + str(index) + '.png'))
+        image = QtGui.QPixmap(img).scaled(11182, 1182)
+        image = QtGui.QPixmap(img)
+        self.tasks_img.setScaledContents(True)
+        self.tasks_img.setPixmap(image)
+        # 总页数为1时禁用下一页
+        total_img_num = len(os.listdir('resources/Image/tasks/chapter' + str(self.nowChapter)))
+        if total_img_num == 1:
+            self.next_tasks_page.setEnabled(False)
+
     # 设置实验原理图片的函数
     def set_principle_img(self, index):
         self.principle_img.setText("")
@@ -123,6 +184,23 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.principle_img.setScaledContents(True)
         self.principle_img.setPixmap(image)
+        # 总页数为1时禁用下一页
+        total_img_num = len(os.listdir('resources/Image/principle/chapter' + str(self.nowChapter)))
+        if total_img_num == 1:
+            self.next_principle_page.setEnabled(False)
+
+    # 设置实验装置图片的函数
+    def set_equipment_img(self, index):
+        self.equipment_img.setText("")
+        img = os.path.abspath(
+            ('resources/Image/equipment/chapter' + str(self.nowChapter) + '/equipment' + str(index) + '.png'))
+        image = QtGui.QPixmap(img).scaled(11182, 1182)
+        self.equipment_img.setScaledContents(True)
+        self.equipment_img.setPixmap(image)
+        # 总页数为1时禁用下一页
+        total_img_num = len(os.listdir('resources/Image/equipment/chapter' + str(self.nowChapter)))
+        if total_img_num == 1:
+            self.next_equipment_page.setEnabled(False)
 
     # 设置实验步骤的函数
     def set_steps_img(self, index):
@@ -132,7 +210,61 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.steps_img.setScaledContents(True)
         self.steps_img.setPixmap(image)
+        # 总页数为1时禁用下一页
+        total_img_num = len(os.listdir('resources/Image/steps/chapter' + str(self.nowChapter)))
+        if total_img_num == 1:
+            self.next_steps_page.setEnabled(False)
 
+    # 点击实验目的的下一页触发的事件
+    def next_purpose_page_click(self):
+        # 当前页+1
+        self.nowPurposeImg += 1
+        # 上一页按钮可用
+        self.pre_purpose_page.setEnabled(True)
+        # 改变实验原理图片内容
+        self.set_purpose_img(self.nowPurposeImg)
+        # 判断是否为最后一页
+        purpose_img_num = os.listdir('resources/Image/purpose/chapter' + str(self.nowChapter))
+        if self.nowPurposeImg >= len(purpose_img_num):
+            self.next_purpose_page.setEnabled(False)
+
+    # 点击实验目的的上一页触发的事件
+    def pre_purpose_page_click(self):
+        # 当前页-1
+        self.nowPurposeImg -= 1
+        # 下一页按钮可用
+        self.next_purpose_page.setEnabled(True)
+        # 改变实验原理图片内容
+        self.set_purpose_img(self.nowPurposeImg)
+        # 判断是否为第一页
+        if self.nowPurposeImg <= 1:
+            self.pre_purpose_page.setEnabled(False)
+
+    # 点击实验任务的下一页触发的事件
+    def next_tasks_page_click(self):
+        # 当前页+1
+        self.nowTaskImg += 1
+        # 上一页按钮可用
+        self.pre_tasks_page.setEnabled(True)
+        # 改变实验原理图片内容
+        self.set_tasks_img(self.nowTaskImg)
+        # 判断是否为最后一页
+        tasks_img_num = os.listdir('resources/Image/tasks/chapter' + str(self.nowChapter))
+        if self.nowTaskImg >= len(tasks_img_num):
+            self.next_tasks_page.setEnabled(False)
+
+    # 点击实验任务的上一页触发的事件
+    def pre_tasks_page_click(self):
+        # 当前页-1
+        self.nowTaskImg -= 1
+        # 下一页按钮可用
+        self.next_tasks_page.setEnabled(True)
+        # 改变实验原理图片内容
+        self.set_tasks_img(self.nowTaskImg)
+        # 判断是否为第一页
+        if self.nowTaskImg <= 1:
+            self.pre_tasks_page.setEnabled(False)
+            
     # 点击实验原理的下一页触发的事件
     def next_principle_page_click(self):
         # 当前页+1
@@ -158,6 +290,31 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         if self.nowPrincipleImg <= 1:
             self.pre_principle_page.setEnabled(False)
 
+    # 点击实验装置的下一页触发的事件
+    def next_equipment_page_click(self):
+        # 当前页+1
+        self.nowEquipmentImg += 1
+        # 上一页按钮可用
+        self.pre_equipment_page.setEnabled(True)
+        # 改变实验原理图片内容
+        self.set_equipment_img(self.nowEquipmentImg)
+        # 判断是否为最后一页
+        equipment_img_num = os.listdir('resources/Image/equipment/chapter' + str(self.nowChapter))
+        if self.nowEquipmentImg >= len(equipment_img_num):
+            self.next_equipment_page.setEnabled(False)
+
+    # 点击实验装置的上一页触发的事件
+    def pre_equipment_page_click(self):
+        # 当前页-1
+        self.nowEquipmentImg -= 1
+        # 下一页按钮可用
+        self.next_equipment_page.setEnabled(True)
+        # 改变实验原理图片内容
+        self.set_equipment_img(self.nowEquipmentImg)
+        # 判断是否为第一页
+        if self.nowEquipmentImg <= 1:
+            self.pre_equipment_page.setEnabled(False)
+            
     # 点击实验步骤的下一页触发的事件(实现同实验原理)
     def next_steps_page_click(self):
         self.nowStepImg += 1

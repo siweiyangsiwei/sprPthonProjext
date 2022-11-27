@@ -42,15 +42,12 @@ def write_docx(self):
             file_path = pre_path + '/' + '实验一.docx'
             doc.save(file_path)
 
-            # 创建一个问答框，注意是Question
+            # 创建一个问答框
             self.box = QMessageBox(QMessageBox.Question, '提示', 'docx文件已保存，是否转换成pdf文件？')
 
-            # 添加按钮，可用中文
+            # 添加按钮
             yes = self.box.addButton('确定', QMessageBox.YesRole)
             no = self.box.addButton('取消', QMessageBox.NoRole)
-
-            # 设置消息框中内容前面的图标
-            self.box.setIcon(1)
 
             # 显示该问答框
             self.box.exec_()

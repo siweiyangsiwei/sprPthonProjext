@@ -90,7 +90,7 @@
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -349,7 +349,7 @@ font-size: 30;
       </column>
       <item>
        <property name="text">
-        <string>实验一  氨基甲酸铵分解反应平衡常数的测定</string>
+        <string>实验一  雷诺实验</string>
        </property>
        <property name="text">
         <string>-</string>
@@ -357,7 +357,7 @@ font-size: 30;
       </item>
       <item>
        <property name="text">
-        <string>实验二  电解质溶液电导的测定</string>
+        <string>实验二  机械能转化实验</string>
        </property>
        <property name="text">
         <string>-</string>
@@ -365,7 +365,55 @@ font-size: 30;
       </item>
       <item>
        <property name="text">
-        <string>实验三  碘和碘离子反应平衡常数的测定</string>
+        <string>实验三  流体阻力的测定</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>实验四  离心泵性能的测定</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>实验五  恒压过滤实验</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>实验六  综合传热实验</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>实验七  精馏实验</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>实验八  CO2吸收-解吸实验</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>实验九  洞道干燥实验</string>
        </property>
        <property name="text">
         <string>-</string>

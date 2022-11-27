@@ -4,7 +4,9 @@
     <file>scut.png</file>
   </qresource>
   <qresource prefix="icons">
+    <file>email.png</file>
     <file>user.png</file>
+    <file>save.png</file>
     <file>link.png</file>
     <file>back.png</file>
     <file>max.png</file>
