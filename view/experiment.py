@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ExperimentWindow(object):
     def setupUi(self, ExperimentWindow):
         ExperimentWindow.setObjectName("ExperimentWindow")
-        ExperimentWindow.resize(1251, 1049)
+        ExperimentWindow.resize(1435, 1049)
         ExperimentWindow.setMinimumSize(QtCore.QSize(1200, 1000))
         self.centralwidget = QtWidgets.QWidget(ExperimentWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -169,7 +169,7 @@ class Ui_ExperimentWindow(object):
         self.tabWidget_2 = QtWidgets.QTabWidget(self.page_7)
         self.tabWidget_2.setMouseTracking(False)
         self.tabWidget_2.setStyleSheet("::tab{\n"
-"    width: 143;\n"
+"    width: 150;\n"
 "    height:50;\n"
 "    background-color: rgb(128, 177, 198,100);\n"
 "    border-right: 1px solid  rgb(200, 200, 200);\n"

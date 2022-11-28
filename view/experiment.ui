@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1251</width>
+    <width>1435</width>
     <height>1049</height>
    </rect>
   </property>
@@ -337,7 +337,7 @@ QPushBotton:hover{
                      </property>
                      <property name="styleSheet">
                       <string notr="true">::tab{
-	width: 143;
+	width: 150;
 	height:50;
 	background-color: rgb(128, 177, 198,100);
 	border-right: 1px solid  rgb(200, 200, 200);
