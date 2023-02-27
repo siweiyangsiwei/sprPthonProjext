@@ -363,6 +363,10 @@ class Ui_ExperimentWindow(object):
         self.tabWidget_2.addTab(self.experiment_steps, "")
         self.experment_amination = QtWidgets.QWidget()
         self.experment_amination.setObjectName("experment_amination")
+        self.amination_in = QtWidgets.QPushButton(self.experment_amination)
+        self.amination_in.setGeometry(QtCore.QRect(120, 160, 1151, 531))
+        self.amination_in.setStyleSheet("font: 36pt \"宋体\";")
+        self.amination_in.setObjectName("amination_in")
         self.tabWidget_2.addTab(self.experment_amination, "")
         self.test = QtWidgets.QWidget()
         self.test.setObjectName("test")
@@ -528,7 +532,7 @@ class Ui_ExperimentWindow(object):
 
         self.retranslateUi(ExperimentWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(5)
         self.stackedWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(ExperimentWindow)
 
@@ -561,6 +565,7 @@ class Ui_ExperimentWindow(object):
         self.pre_steps_page.setText(_translate("ExperimentWindow", "上一页"))
         self.next_steps_page.setText(_translate("ExperimentWindow", "下一页"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.experiment_steps), _translate("ExperimentWindow", "实验步骤"))
+        self.amination_in.setText(_translate("ExperimentWindow", "进入实验动画模拟"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.experment_amination), _translate("ExperimentWindow", "实验动画"))
         self.question.setText(_translate("ExperimentWindow", "TextLabel"))
         self.section_A.setText(_translate("ExperimentWindow", "TextLabel"))

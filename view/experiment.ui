@@ -357,7 +357,7 @@ QPushBotton:hover{
 </string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="tab">
                       <attribute name="title">
@@ -648,6 +648,22 @@ QPushBotton:hover{
                       <attribute name="title">
                        <string>实验动画</string>
                       </attribute>
+                      <widget class="QPushButton" name="amination_in">
+                       <property name="geometry">
+                        <rect>
+                         <x>120</x>
+                         <y>160</y>
+                         <width>1151</width>
+                         <height>531</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 36pt &quot;宋体&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>进入实验动画模拟</string>
+                       </property>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="test">
                       <attribute name="title">

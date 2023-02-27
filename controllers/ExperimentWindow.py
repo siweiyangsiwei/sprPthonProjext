@@ -3,6 +3,7 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
+from controllers.Simulation import Simulation
 from tools import SqlTools
 import function.expReport_fn
 
@@ -91,6 +92,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 点击test部分上一题触发pre_test_question_click事件
         self.pre_test_question.clicked.connect(self.pre_test_question_click)
+
+        self.amination_in.clicked.connect(self.amination_in_click)
+
 
         self.shutdown.clicked.connect(lambda: self.close())
         self.mini.clicked.connect(lambda: self.showMinimized())
@@ -331,6 +335,16 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.set_steps_img(self.nowStepImg)
         if self.nowStepImg <= 1:
             self.pre_steps_page.setEnabled(False)
+
+    # 实验动画开始按钮点击
+    def amination_in_click(self):
+        print("点击了实验动画开始按钮")
+        simulation = Simulation()
+        simulation.verticalStackedWidget.setCurrentIndex(self.nowChapter - 1)
+        simulation.show()
+        print("实验动画页面被关闭")
+
+
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):

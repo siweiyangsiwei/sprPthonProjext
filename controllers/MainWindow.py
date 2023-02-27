@@ -32,7 +32,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         # 调用一下chapter_click(self, num)方法进行章节的初始化,其中num为当前章节的索引,从1开始
         self.exp_window.chapter_click(item_index + 1)
         self.exp_window.receive_main(self)
-        self.close()
+        # self.close()
 
     def update_time(self, hour, min, sec):
         if self.treeWidget.currentItem().text(1) != '-':
