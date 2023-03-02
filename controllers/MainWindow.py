@@ -15,8 +15,8 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         # “实验选择”中根据文字数量自动调整第一列宽度
         self.treeWidget.resizeColumnToContents(0)
         # 用户头像
-        self.label.setPixmap(QtGui.QPixmap("srpresources/user.png"))
-        self.label.setScaledContents(True)
+        # self.label.setPixmap(QtGui.QPixmap("srpresources/user.png"))
+        # self.label.setScaledContents(True)
 
     def open_ExpWin(self):
         # 获取选中的实验

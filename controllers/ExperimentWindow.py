@@ -1,6 +1,6 @@
 import os.path
-from PyQt5 import QtGui
-from PyQt5.QtWidgets import QMainWindow, QPushButton
+from PyQt5 import QtGui,QtWidgets
+from PyQt5.QtWidgets import QMainWindow,QApplication
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from tools import SqlTools
@@ -41,6 +41,22 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def __init__(self):
         super(ExperimentWindow, self).__init__()
         self.setupUi(self)
+
+        # 根据分辨率设置窗口大小
+        desktop = QApplication.desktop()
+        width = desktop.width()
+        # 屏幕比不同而采用固定的窗口比例，窗口宽高之比会变化，看起来不美观
+        # 所以得知道窗口宽高比例、窗口宽高占屏幕宽高比例
+        # 先设置窗口占据屏幕的大小，求出宽，高用窗口比例得出
+        # 窗口宽高比，这里设置 1.3（适应图片）
+        window_ratio = 1.3
+        # 窗口宽占据屏幕的多少
+        window_cover = 0.6
+        # 求出窗口宽高
+        resize_width = width * window_cover
+        resize_height = resize_width / window_ratio
+        # 设置窗口大小
+        self.resize(resize_width, resize_height)
 
         self.pre_test_question.setEnabled(False)
         self.pre_purpose_page.setEnabled(False)
@@ -422,3 +438,23 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def open_emailWindow(self):
         email_window = EmailWindow()
         email_window.show()
+
+    # 手动改变窗口大小时，触发方法：
+    def resizeEvent(self, event):
+        # 获取窗口大小
+        window_width = event.size().width()
+        # tab栏宽度大概占窗口宽度1/9
+        tab_width = str(window_width * 1 / 9)
+        self.tabWidget.setStyleSheet("::tab{width: " + tab_width + ";\n"
+                                                                   "    height:50;\n"
+                                                                   "    background-color: rgb(128, 177, 198,100);\n"
+                                                                   "    border-right: 1px solid  rgb(200, 200, 200);\n"
+                                                                   "    font-size:20px;}\n"
+                                                                   "::tab:last {\n"
+                                                                   "    border:none;}\n"
+                                                                   "::tab:hover {\n"
+                                                                   "    background-color: rgb(128, 177, 198,150);\n"
+                                                                   "}\n"
+                                                                   "::tab:selected {\n"
+                                                                   "    background-color: rgb(128, 177, 198);\n"
+                                                                   "}")
