@@ -459,7 +459,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         window_width = event.size().width()
         # tab栏宽度大概占窗口宽度1/9
         tab_width = str(window_width * 1 / 9)
-        self.tabWidget.setStyleSheet("::tab{width: " + tab_width + ";\n"
+        self.tabWidget_2.setStyleSheet("::tab{width: " + tab_width + ";\n"
                                                                    "    height:50;\n"
                                                                    "    background-color: rgb(128, 177, 198,100);\n"
                                                                    "    border-right: 1px solid  rgb(200, 200, 200);\n"
