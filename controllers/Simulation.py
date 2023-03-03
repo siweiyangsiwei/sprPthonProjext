@@ -1,7 +1,7 @@
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QMainWindow, QPushButton
+from PyQt5.QtWidgets import QMainWindow
 
-import simulation_tool
+from tools import simulation_tool
 from view.simulation import Ui_Form
 
 class Simulation(QMainWindow, Ui_Form):
