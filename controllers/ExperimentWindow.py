@@ -5,8 +5,8 @@ from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-import function.expReport_fn
-
+import function.report_1
+import calculate.exp_1
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 记录当前正在学习的章节
@@ -58,6 +58,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         resize_height = resize_width / window_ratio
         # 设置窗口大小
         self.resize(resize_width, resize_height)
+        # 表格均分
+        self.exp_data_1a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_1a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_1b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_1b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         self.pre_test_question.setEnabled(False)
         self.pre_purpose_page.setEnabled(False)
@@ -116,13 +121,21 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.mini.clicked.connect(lambda: self.showMinimized())
         self.back.clicked.connect(self.back_main)
         self.send_email.clicked.connect(self.open_emailWindow)
-        self.exp_report.clicked.connect(lambda checked: function.expReport_fn.get_data(self))
+
+        # 生成所在章节的实验报告
+        self.exp_report.clicked.connect(self.select_report)
+
+        # 计算按键触发事件
+        self.calculate_1.clicked.connect(lambda: calculate.exp_1.calculate_data1(self))
+
+        # 重置数据
+        self.reset_1.clicked.connect(lambda: calculate.exp_1.reset_pic1(self))
 
     # 章节改变的事件
     def chapter_click(self, num):
 
         self.nowChapter = num
-
+        print(self.nowChapter)
         # 设置窗口的Title为当前章节名
         self.setWindowTitle(self.chapterNameList[num - 1])
 
@@ -472,3 +485,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
                                                                    "::tab:selected {\n"
                                                                    "    background-color: rgb(128, 177, 198);\n"
                                                                    "}")
+
+    # 导出实验报告
+    def select_report(self):
+        if (self.nowChapter == 1):
+            function.report_1.get_data(self)
+
