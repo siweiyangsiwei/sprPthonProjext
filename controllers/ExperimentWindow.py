@@ -154,7 +154,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.data_processing_5_table_2.setSpan(10, 7, 10, 1)
         self.data_processing_5_table_2.setSpan(20, 7, 10, 1)
 
+        # 第五章实验数据开始处理触发的事件
         self.data_processing_5_date_calculate.clicked.connect(self.data_processing_5_date_calculate_click)
+
+        # 第七章实验数据开始处理触发的事件
+        self.data_processing_7_data_calculate.clicked.connect(self.data_processing_7_data_calculate_click)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -190,6 +194,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 清空回答
         self.answerList = []
 
+        # 将实验数据处理的页面调整到当前的实验页面
+        self.stackedWidget_2.setCurrentIndex(self.nowChapter - 1)
+
     # 开始学习按钮的点击触发事件
     def start_learn(self):
         # 清空test部分的答题框
@@ -219,7 +226,6 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         total_img_num = len(os.listdir('resources/Image/purpose/chapter' + str(self.nowChapter)))
         if total_img_num == 1:
             self.next_purpose_page.setEnabled(False)
-
 
     # 设置实验任务图片的函数
     def set_tasks_img(self, index):
@@ -402,6 +408,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 第五章数据处理的开始计算按钮绑定函数
     def data_processing_5_date_calculate_click(self):
         data_processing.data_processing_5_date_calculate_click(self)
+
+    def data_processing_7_data_calculate_click(self):
+        data_processing.data_processing_7_data_calculate_click(self)
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):
