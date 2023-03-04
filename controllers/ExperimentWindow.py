@@ -1,10 +1,11 @@
 import os.path
-from PyQt5 import QtGui,QtWidgets
-from PyQt5.QtWidgets import QMainWindow,QApplication
+from PyQt5 import QtGui, QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
+from function import data_processing
 import function.report_1
 import calculate.exp_1
 import calculate.exp_2
@@ -140,6 +141,30 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.reset_3a.clicked.connect(lambda: calculate.exp_3.reset_pic_3a(self))
         self.reset_3b.clicked.connect(lambda: calculate.exp_3.reset_pic_3b(self))
         self.reset_3c.clicked.connect(lambda: calculate.exp_3.reset_pic_3c(self))
+
+        # 第五章数据处理第一个表格的设计
+        self.data_processing_5_table_1.setSpan(0, 0, 10, 1)
+        self.data_processing_5_table_1.setSpan(10, 0, 10, 1)
+        self.data_processing_5_table_1.setSpan(20, 0, 10, 1)
+
+        # 第五章数据处理第二个表格设计
+        self.data_processing_5_table_2.setSpan(0, 0, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 0, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 0, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 4, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 4, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 4, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 5, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 5, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 5, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 6, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 6, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 6, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 7, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 7, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 7, 10, 1)
+
+        self.data_processing_5_date_calculate.clicked.connect(self.data_processing_5_date_calculate_click)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -382,13 +407,16 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
     # 实验动画开始按钮点击
     def amination_in_click(self):
-        print("点击了实验动画开始按钮")
+        # TODO 这里要进入实验动画,可以做一个判断
+        print("进入实验动画")
         simulation = Simulation()
         simulation.verticalStackedWidget.setCurrentIndex(self.nowChapter - 1)
         simulation.show()
         print("实验动画页面被关闭")
 
-
+    # 第五章数据处理的开始计算按钮绑定函数
+    def data_processing_5_date_calculate_click(self):
+        data_processing.data_processing_5_date_calculate_click(self)
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):

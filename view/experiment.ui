@@ -1362,7 +1362,7 @@ QPushBotton:hover{
                            </item>
                           </layout>
                          </widget>
-                         <widget class="QWidget" name="page_2">
+                         <widget class="QWidget" name="page_23">
                           <layout class="QHBoxLayout" name="horizontalLayout_13">
                            <item>
                             <layout class="QGridLayout" name="gridLayout_2">
@@ -2203,7 +2203,7 @@ QPushBotton:hover{
                            </item>
                           </layout>
                          </widget>
-                         <widget class="QWidget" name="page_3">
+                         <widget class="QWidget" name="page_33">
                           <layout class="QHBoxLayout" name="horizontalLayout_16">
                            <item>
                             <layout class="QGridLayout" name="gridLayout_4" rowstretch="1,1,1,14,1,1,6,1">
