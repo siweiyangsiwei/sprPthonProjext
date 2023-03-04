@@ -89,7 +89,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 点击实验任务上一页按钮触发pre_tasks_page_click事件
         self.pre_tasks_page.clicked.connect(self.pre_tasks_page_click)
-        
+
         # 点击实验原理下一页按钮触发next_principle_page_click事件
         self.next_principle_page.clicked.connect(self.next_principle_page_click)
 
@@ -101,7 +101,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 点击实验装置上一页按钮触发pre_equipment_page_click事件
         self.pre_equipment_page.clicked.connect(self.pre_equipment_page_click)
-        
+
         # 点击实验步骤下一页按钮触发next_steps_page_click事件
         self.next_steps_page.clicked.connect(self.next_steps_page_click)
 
@@ -164,7 +164,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.data_processing_5_table_2.setSpan(10, 7, 10, 1)
         self.data_processing_5_table_2.setSpan(20, 7, 10, 1)
 
+        # 第五章实验数据开始处理触发的事件
         self.data_processing_5_date_calculate.clicked.connect(self.data_processing_5_date_calculate_click)
+
+        # 第七章实验数据开始处理触发的事件
+        self.data_processing_7_data_calculate.clicked.connect(self.data_processing_7_data_calculate_click)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -204,6 +208,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.calculate_stackWiget.setCurrentIndex(self.nowChapter-1)
 
 
+
+        # 将实验数据处理的页面调整到当前的实验页面
+        self.stackedWidget_2.setCurrentIndex(self.nowChapter - 1)
 
     # 开始学习按钮的点击触发事件
     def start_learn(self):
@@ -337,7 +344,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 判断是否为第一页
         if self.nowTaskImg <= 1:
             self.pre_tasks_page.setEnabled(False)
-            
+
     # 点击实验原理的下一页触发的事件
     def next_principle_page_click(self):
         # 当前页+1
@@ -387,7 +394,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 判断是否为第一页
         if self.nowEquipmentImg <= 1:
             self.pre_equipment_page.setEnabled(False)
-            
+
     # 点击实验步骤的下一页触发的事件(实现同实验原理)
     def next_steps_page_click(self):
         self.nowStepImg += 1
@@ -417,6 +424,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 第五章数据处理的开始计算按钮绑定函数
     def data_processing_5_date_calculate_click(self):
         data_processing.data_processing_5_date_calculate_click(self)
+
+    def data_processing_7_data_calculate_click(self):
+        data_processing.data_processing_7_data_calculate_click(self)
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):
