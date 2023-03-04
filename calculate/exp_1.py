@@ -57,9 +57,9 @@ def calculate_data1(self):
             else:
                 self.exp_data_1b.setItem(i, 4, QtWidgets.QTableWidgetItem('湍流'))
     except:
-        QMessageBox.critical(self, '错误', '基本数据或表1数据不完整！', QMessageBox.Ok)
+        QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)
 
 
-def reset_pic1(self):
+def reset_pic(self):
     self.exp_data_1a.clearContents()
     self.exp_data_1b.clearContents()

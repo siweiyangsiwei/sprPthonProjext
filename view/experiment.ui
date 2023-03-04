@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1435</width>
-    <height>1049</height>
+    <height>1048</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -831,9 +831,9 @@ QPushBotton:hover{
                       </attribute>
                       <layout class="QHBoxLayout" name="horizontalLayout_7">
                        <item>
-                        <widget class="QStackedWidget" name="stackedWidget_2">
+                        <widget class="QStackedWidget" name="calculate_stackWiget">
                          <property name="currentIndex">
-                          <number>0</number>
+                          <number>2</number>
                          </property>
                          <widget class="QWidget" name="page">
                           <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -1363,19 +1363,1417 @@ QPushBotton:hover{
                           </layout>
                          </widget>
                          <widget class="QWidget" name="page_2">
-                          <widget class="QPushButton" name="pushButton">
-                           <property name="geometry">
-                            <rect>
-                             <x>170</x>
-                             <y>190</y>
-                             <width>93</width>
-                             <height>28</height>
-                            </rect>
-                           </property>
-                           <property name="text">
-                            <string>PushButton</string>
-                           </property>
-                          </widget>
+                          <layout class="QHBoxLayout" name="horizontalLayout_13">
+                           <item>
+                            <layout class="QGridLayout" name="gridLayout_2">
+                             <item row="5" column="0">
+                              <widget class="QTableWidget" name="exp_data_2b">
+                               <attribute name="horizontalHeaderStretchLastSection">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderCascadingSectionResizes">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                                <bool>false</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderStretchLastSection">
+                                <bool>true</bool>
+                               </attribute>
+                               <row>
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </row>
+                               <column>
+                                <property name="text">
+                                 <string>流量Q（L/h)</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>主体管路平均流速u(m/s)</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>2截面平均流速(m/s)</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>通过节流件阻力损失（mmH2O）</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>5截面中心点速度u5(m/s)</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>7截面中心点速度u7(m/s)</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>u/u5</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>u/u7</string>
+                                </property>
+                               </column>
+                              </widget>
+                             </item>
+                             <item row="0" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_14">
+                               <item>
+                                <widget class="QLabel" name="label">
+                                 <property name="text">
+                                  <string>管内径：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="d2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_2">
+                                 <property name="text">
+                                  <string>mm</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <spacer name="horizontalSpacer_2">
+                                 <property name="orientation">
+                                  <enum>Qt::Horizontal</enum>
+                                 </property>
+                                 <property name="sizeHint" stdset="0">
+                                  <size>
+                                   <width>88</width>
+                                   <height>28</height>
+                                  </size>
+                                 </property>
+                                </spacer>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_3">
+                                 <property name="text">
+                                  <string>变截面管喉径：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="d_2">
+                                 <property name="enabled">
+                                  <bool>true</bool>
+                                 </property>
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                 <property name="maxLength">
+                                  <number>32726</number>
+                                 </property>
+                                 <property name="echoMode">
+                                  <enum>QLineEdit::Normal</enum>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_4">
+                                 <property name="text">
+                                  <string>mm</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <spacer name="horizontalSpacer_3">
+                                 <property name="orientation">
+                                  <enum>Qt::Horizontal</enum>
+                                 </property>
+                                 <property name="sizeHint" stdset="0">
+                                  <size>
+                                   <width>88</width>
+                                   <height>28</height>
+                                  </size>
+                                 </property>
+                                </spacer>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_5">
+                                 <property name="text">
+                                  <string>水温：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="t2">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_6">
+                                 <property name="text">
+                                  <string>℃</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <spacer name="horizontalSpacer_4">
+                                 <property name="orientation">
+                                  <enum>Qt::Horizontal</enum>
+                                 </property>
+                                 <property name="sizeHint" stdset="0">
+                                  <size>
+                                   <width>88</width>
+                                   <height>28</height>
+                                  </size>
+                                 </property>
+                                </spacer>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_7">
+                                 <property name="text">
+                                  <string>水密度：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="rou2">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_8">
+                                 <property name="text">
+                                  <string>kg／m3 </string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <spacer name="horizontalSpacer_5">
+                                 <property name="orientation">
+                                  <enum>Qt::Horizontal</enum>
+                                 </property>
+                                 <property name="sizeHint" stdset="0">
+                                  <size>
+                                   <width>88</width>
+                                   <height>28</height>
+                                  </size>
+                                 </property>
+                                </spacer>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_11">
+                                 <property name="text">
+                                  <string>水粘度：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="miu2">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_21">
+                                 <property name="text">
+                                  <string>Pa·s</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item row="3" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_15">
+                               <item>
+                                <widget class="QPushButton" name="reset_2">
+                                 <property name="text">
+                                  <string>重置</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="calculate_2">
+                                 <property name="text">
+                                  <string>计算</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QTableWidget" name="exp_data_2a">
+                               <attribute name="horizontalHeaderCascadingSectionResizes">
+                                <bool>false</bool>
+                               </attribute>
+                               <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="horizontalHeaderStretchLastSection">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderVisible">
+                                <bool>false</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderCascadingSectionResizes">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderHighlightSections">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                                <bool>false</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderStretchLastSection">
+                                <bool>true</bool>
+                               </attribute>
+                               <row>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>新建行</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>新建行</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>新建行</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>新建行</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                               </row>
+                               <column>
+                                <property name="text">
+                                 <string>流量\高度</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h1</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h2</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h3</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h4</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h5</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h6</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h7</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>h8</string>
+                                </property>
+                               </column>
+                               <item row="0" column="0">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="0" column="1">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="0" column="2">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="0" column="3">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="0" column="4">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="0" column="5">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="0" column="6">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="0" column="7">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="0" column="8">
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </item>
+                               <item row="1" column="0">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="1" column="1">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="1" column="2">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="1" column="3">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="1" column="4">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="1" column="5">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="1" column="6">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="1" column="7">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="1" column="8">
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </item>
+                               <item row="2" column="0">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="2" column="1">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="2" column="2">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="2" column="3">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="2" column="4">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="2" column="5">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="2" column="6">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="2" column="7">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="2" column="8">
+                                <property name="text">
+                                 <string>3</string>
+                                </property>
+                               </item>
+                               <item row="3" column="0">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="3" column="1">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="3" column="2">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="3" column="3">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="3" column="4">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="3" column="5">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="3" column="6">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="3" column="7">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="3" column="8">
+                                <property name="text">
+                                 <string>4</string>
+                                </property>
+                               </item>
+                               <item row="4" column="0">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="4" column="1">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="4" column="2">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="4" column="3">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="4" column="4">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="4" column="5">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="4" column="6">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="4" column="7">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="4" column="8">
+                                <property name="text">
+                                 <string>5</string>
+                                </property>
+                               </item>
+                               <item row="5" column="0">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="5" column="1">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="5" column="2">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="5" column="3">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="5" column="4">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="5" column="5">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="5" column="6">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="5" column="7">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="5" column="8">
+                                <property name="text">
+                                 <string>6</string>
+                                </property>
+                               </item>
+                               <item row="6" column="0">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="6" column="1">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="6" column="2">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="6" column="3">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="6" column="4">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="6" column="5">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="6" column="6">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="6" column="7">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="6" column="8">
+                                <property name="text">
+                                 <string>7</string>
+                                </property>
+                               </item>
+                               <item row="7" column="0">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="7" column="1">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="7" column="2">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="7" column="3">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="7" column="4">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="7" column="5">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="7" column="6">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="7" column="7">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="7" column="8">
+                                <property name="text">
+                                 <string>8</string>
+                                </property>
+                               </item>
+                               <item row="8" column="0">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="8" column="1">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="8" column="2">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="8" column="3">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="8" column="4">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="8" column="5">
+                                <property name="text">
+                                 <string>10</string>
+                                </property>
+                               </item>
+                               <item row="8" column="6">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                               <item row="8" column="7">
+                                <property name="text">
+                                 <string>10</string>
+                                </property>
+                               </item>
+                               <item row="8" column="8">
+                                <property name="text">
+                                 <string>9</string>
+                                </property>
+                               </item>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="label_22">
+                               <property name="text">
+                                <string>表1 机械能转化实验原始数据记录表</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="4" column="0">
+                              <widget class="QLabel" name="label_23">
+                               <property name="text">
+                                <string>表2 实验数据处理</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </item>
+                          </layout>
+                         </widget>
+                         <widget class="QWidget" name="page_3">
+                          <layout class="QHBoxLayout" name="horizontalLayout_16">
+                           <item>
+                            <layout class="QGridLayout" name="gridLayout_4" rowstretch="1,1,1,14,1,1,6,1">
+                             <item row="0" column="0">
+                              <widget class="QLabel" name="label_25">
+                               <property name="text">
+                                <string>1、光滑管和粗糙管</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="6" column="0">
+                              <widget class="QTableWidget" name="exp_data_3c">
+                               <attribute name="horizontalHeaderStretchLastSection">
+                                <bool>true</bool>
+                               </attribute>
+                               <attribute name="verticalHeaderStretchLastSection">
+                                <bool>true</bool>
+                               </attribute>
+                               <row>
+                                <property name="text">
+                                 <string>项目</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>流量，m3/h</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>压差，kPa</string>
+                                </property>
+                               </row>
+                               <row>
+                                <property name="text">
+                                 <string>局部阻力系数 ξ</string>
+                                </property>
+                               </row>
+                               <column>
+                                <property name="text">
+                                 <string>阀门开度</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>新建列</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>新建列</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>新建列</string>
+                                </property>
+                               </column>
+                               <column>
+                                <property name="text">
+                                 <string>新建列</string>
+                                </property>
+                               </column>
+                               <item row="0" column="0">
+                                <property name="text">
+                                 <string>1/5</string>
+                                </property>
+                               </item>
+                               <item row="0" column="1">
+                                <property name="text">
+                                 <string>2/5</string>
+                                </property>
+                               </item>
+                               <item row="0" column="2">
+                                <property name="text">
+                                 <string>3/5</string>
+                                </property>
+                               </item>
+                               <item row="0" column="3">
+                                <property name="text">
+                                 <string>4/5</string>
+                                </property>
+                               </item>
+                               <item row="0" column="4">
+                                <property name="text">
+                                 <string>全开（90°）</string>
+                                </property>
+                               </item>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_18">
+                               <item>
+                                <widget class="QLabel" name="label_27">
+                                 <property name="text">
+                                  <string>管径：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="d3">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_28">
+                                 <property name="text">
+                                  <string>mm</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_29">
+                                 <property name="text">
+                                  <string>管长：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="l3">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_30">
+                                 <property name="text">
+                                  <string>mm</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_26">
+                                 <property name="text">
+                                  <string>转速：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="n3">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_31">
+                                 <property name="text">
+                                  <string>温度：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="t3">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_32">
+                                 <property name="text">
+                                  <string>℃</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_35">
+                                 <property name="text">
+                                  <string>流体密度：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="rou3">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_36">
+                                 <property name="text">
+                                  <string>kg／m3 </string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_37">
+                                 <property name="text">
+                                  <string>流体粘度：</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLineEdit" name="miu3">
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_38">
+                                 <property name="text">
+                                  <string>Pa·s</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item row="7" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_23">
+                               <item>
+                                <widget class="QPushButton" name="reset_3c">
+                                 <property name="text">
+                                  <string>重置</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="calculate_3c">
+                                 <property name="text">
+                                  <string>计算</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item row="5" column="0">
+                              <widget class="QLabel" name="label_34">
+                               <property name="text">
+                                <string>2、阀门局部阻力系数测定</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="4" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_22">
+                               <item>
+                                <layout class="QHBoxLayout" name="horizontalLayout_24">
+                                 <item>
+                                  <widget class="QPushButton" name="reset_3a">
+                                   <property name="text">
+                                    <string>重置</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="calculate_3a">
+                                   <property name="text">
+                                    <string>计算</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="get_pic_3a">
+                                   <property name="text">
+                                    <string>作图</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </item>
+                               <item>
+                                <layout class="QHBoxLayout" name="horizontalLayout_25">
+                                 <item>
+                                  <widget class="QPushButton" name="reset_3b">
+                                   <property name="text">
+                                    <string>重置</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="calculate_3b">
+                                   <property name="text">
+                                    <string>计算</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </item>
+                              </layout>
+                             </item>
+                             <item row="3" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_21">
+                               <item>
+                                <widget class="QTableWidget" name="exp_data_3a">
+                                 <attribute name="horizontalHeaderStretchLastSection">
+                                  <bool>true</bool>
+                                 </attribute>
+                                 <attribute name="verticalHeaderStretchLastSection">
+                                  <bool>true</bool>
+                                 </attribute>
+                                 <row>
+                                  <property name="text">
+                                   <string>1</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>2</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>3</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>4</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>5</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>6</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>7</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>8</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>9</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>10</string>
+                                  </property>
+                                 </row>
+                                 <column>
+                                  <property name="text">
+                                   <string>流  量（m3/h）</string>
+                                  </property>
+                                 </column>
+                                 <column>
+                                  <property name="text">
+                                   <string>压差（kPa）</string>
+                                  </property>
+                                 </column>
+                                 <column>
+                                  <property name="text">
+                                   <string>雷诺数Re</string>
+                                  </property>
+                                 </column>
+                                 <column>
+                                  <property name="text">
+                                   <string>摩擦系数λ</string>
+                                  </property>
+                                 </column>
+                                 <item row="0" column="0">
+                                  <property name="text">
+                                   <string>1</string>
+                                  </property>
+                                 </item>
+                                 <item row="0" column="1">
+                                  <property name="text">
+                                   <string>1</string>
+                                  </property>
+                                 </item>
+                                 <item row="1" column="0">
+                                  <property name="text">
+                                   <string>2</string>
+                                  </property>
+                                 </item>
+                                 <item row="1" column="1">
+                                  <property name="text">
+                                   <string>2</string>
+                                  </property>
+                                 </item>
+                                 <item row="2" column="0">
+                                  <property name="text">
+                                   <string>3</string>
+                                  </property>
+                                 </item>
+                                 <item row="2" column="1">
+                                  <property name="text">
+                                   <string>3</string>
+                                  </property>
+                                 </item>
+                                 <item row="3" column="0">
+                                  <property name="text">
+                                   <string>4</string>
+                                  </property>
+                                 </item>
+                                 <item row="3" column="1">
+                                  <property name="text">
+                                   <string>4</string>
+                                  </property>
+                                 </item>
+                                 <item row="4" column="0">
+                                  <property name="text">
+                                   <string>5</string>
+                                  </property>
+                                 </item>
+                                 <item row="4" column="1">
+                                  <property name="text">
+                                   <string>5</string>
+                                  </property>
+                                 </item>
+                                 <item row="5" column="0">
+                                  <property name="text">
+                                   <string>6</string>
+                                  </property>
+                                 </item>
+                                 <item row="5" column="1">
+                                  <property name="text">
+                                   <string>6</string>
+                                  </property>
+                                 </item>
+                                 <item row="6" column="0">
+                                  <property name="text">
+                                   <string>7</string>
+                                  </property>
+                                 </item>
+                                 <item row="6" column="1">
+                                  <property name="text">
+                                   <string>7</string>
+                                  </property>
+                                 </item>
+                                 <item row="7" column="0">
+                                  <property name="text">
+                                   <string>8</string>
+                                  </property>
+                                 </item>
+                                 <item row="7" column="1">
+                                  <property name="text">
+                                   <string>8</string>
+                                  </property>
+                                 </item>
+                                 <item row="8" column="0">
+                                  <property name="text">
+                                   <string>9</string>
+                                  </property>
+                                 </item>
+                                 <item row="8" column="1">
+                                  <property name="text">
+                                   <string>9</string>
+                                  </property>
+                                 </item>
+                                 <item row="9" column="0">
+                                  <property name="text">
+                                   <string>10</string>
+                                  </property>
+                                 </item>
+                                 <item row="9" column="1">
+                                  <property name="text">
+                                   <string>10</string>
+                                  </property>
+                                 </item>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QTableWidget" name="exp_data_3b">
+                                 <attribute name="horizontalHeaderStretchLastSection">
+                                  <bool>true</bool>
+                                 </attribute>
+                                 <attribute name="verticalHeaderStretchLastSection">
+                                  <bool>true</bool>
+                                 </attribute>
+                                 <row>
+                                  <property name="text">
+                                   <string>1</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>2</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>3</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>4</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>5</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>6</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>7</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>8</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>9</string>
+                                  </property>
+                                 </row>
+                                 <row>
+                                  <property name="text">
+                                   <string>10</string>
+                                  </property>
+                                 </row>
+                                 <column>
+                                  <property name="text">
+                                   <string>流  量（m3/h）</string>
+                                  </property>
+                                 </column>
+                                 <column>
+                                  <property name="text">
+                                   <string>压差（kPa）</string>
+                                  </property>
+                                 </column>
+                                 <column>
+                                  <property name="text">
+                                   <string>雷诺数Re</string>
+                                  </property>
+                                 </column>
+                                 <column>
+                                  <property name="text">
+                                   <string>摩擦系数λ</string>
+                                  </property>
+                                 </column>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item row="2" column="0">
+                              <layout class="QHBoxLayout" name="horizontalLayout_26">
+                               <item>
+                                <widget class="QLabel" name="label_24">
+                                 <property name="text">
+                                  <string>(1)光滑管</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label_33">
+                                 <property name="text">
+                                  <string>（2）粗糙管</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </item>
+                          </layout>
                          </widget>
                         </widget>
                        </item>

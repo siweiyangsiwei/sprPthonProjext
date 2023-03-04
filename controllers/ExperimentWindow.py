@@ -7,6 +7,8 @@ from controllers.Simulation import Simulation
 from tools import SqlTools
 import function.report_1
 import calculate.exp_1
+import calculate.exp_2
+import calculate.exp_3
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 记录当前正在学习的章节
@@ -58,11 +60,8 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         resize_height = resize_width / window_ratio
         # 设置窗口大小
         self.resize(resize_width, resize_height)
-        # 表格均分
-        self.exp_data_1a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        self.exp_data_1a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        self.exp_data_1b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        self.exp_data_1b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # 表格设置
+        self.table_style()
 
         self.pre_test_question.setEnabled(False)
         self.pre_purpose_page.setEnabled(False)
@@ -127,9 +126,20 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 计算按键触发事件
         self.calculate_1.clicked.connect(lambda: calculate.exp_1.calculate_data1(self))
+        self.calculate_2.clicked.connect(lambda: calculate.exp_2.calculate_data2(self))
+        self.calculate_3a.clicked.connect(lambda: calculate.exp_3.calculate_data_3a(self))
+        self.calculate_3b.clicked.connect(lambda: calculate.exp_3.calculate_data_3b(self))
+        self.calculate_3c.clicked.connect(lambda: calculate.exp_3.calculate_data_3c(self))
+
+        # 作图按键触发事件
+        self.get_pic_3a.clicked.connect(lambda: calculate.exp_3.get_pic_3a(self))
 
         # 重置数据
-        self.reset_1.clicked.connect(lambda: calculate.exp_1.reset_pic1(self))
+        self.reset_1.clicked.connect(lambda: calculate.exp_1.reset_pic(self))
+        self.reset_2.clicked.connect(lambda: calculate.exp_2.reset_pic(self))
+        self.reset_3a.clicked.connect(lambda: calculate.exp_3.reset_pic_3a(self))
+        self.reset_3b.clicked.connect(lambda: calculate.exp_3.reset_pic_3b(self))
+        self.reset_3c.clicked.connect(lambda: calculate.exp_3.reset_pic_3c(self))
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -164,6 +174,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.answer.setText("")
         # 清空回答
         self.answerList = []
+
+        # 初始化章节对应的数据处理页面
+        self.calculate_stackWiget.setCurrentIndex(self.nowChapter-1)
+
+
 
     # 开始学习按钮的点击触发事件
     def start_learn(self):
@@ -485,6 +500,25 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
                                                                    "::tab:selected {\n"
                                                                    "    background-color: rgb(128, 177, 198);\n"
                                                                    "}")
+    # 表格均分
+    def table_style(self):
+        # 实验一表格
+        self.exp_data_1a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_1a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_1b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_1b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # 实验二表格
+        self.exp_data_2a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_2a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_2b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_2b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # 实验三表格
+        self.exp_data_3a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_3a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_3b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_3b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_3c.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_3c.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
     # 导出实验报告
     def select_report(self):
