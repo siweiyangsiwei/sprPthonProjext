@@ -1,12 +1,14 @@
 import os.path
-from PyQt5 import QtGui,QtWidgets
-from PyQt5.QtWidgets import QMainWindow,QApplication
+from PyQt5 import QtGui, QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
+from function import data_processing
 import function.report_1
 import calculate.exp_1
+
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 记录当前正在学习的章节
@@ -89,7 +91,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 点击实验任务上一页按钮触发pre_tasks_page_click事件
         self.pre_tasks_page.clicked.connect(self.pre_tasks_page_click)
-        
+
         # 点击实验原理下一页按钮触发next_principle_page_click事件
         self.next_principle_page.clicked.connect(self.next_principle_page_click)
 
@@ -101,7 +103,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 点击实验装置上一页按钮触发pre_equipment_page_click事件
         self.pre_equipment_page.clicked.connect(self.pre_equipment_page_click)
-        
+
         # 点击实验步骤下一页按钮触发next_steps_page_click事件
         self.next_steps_page.clicked.connect(self.next_steps_page_click)
 
@@ -116,7 +118,6 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         self.amination_in.clicked.connect(self.amination_in_click)
 
-
         self.shutdown.clicked.connect(lambda: self.close())
         self.mini.clicked.connect(lambda: self.showMinimized())
         self.back.clicked.connect(self.back_main)
@@ -130,6 +131,30 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 重置数据
         self.reset_1.clicked.connect(lambda: calculate.exp_1.reset_pic1(self))
+
+        # 第五章数据处理第一个表格的设计
+        self.data_processing_5_table_1.setSpan(0, 0, 10, 1)
+        self.data_processing_5_table_1.setSpan(10, 0, 10, 1)
+        self.data_processing_5_table_1.setSpan(20, 0, 10, 1)
+
+        # 第五章数据处理第二个表格设计
+        self.data_processing_5_table_2.setSpan(0, 0, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 0, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 0, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 4, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 4, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 4, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 5, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 5, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 5, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 6, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 6, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 6, 10, 1)
+        self.data_processing_5_table_2.setSpan(0, 7, 10, 1)
+        self.data_processing_5_table_2.setSpan(10, 7, 10, 1)
+        self.data_processing_5_table_2.setSpan(20, 7, 10, 1)
+
+        self.data_processing_5_date_calculate.clicked.connect(self.data_processing_5_date_calculate_click)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -194,6 +219,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         total_img_num = len(os.listdir('resources/Image/purpose/chapter' + str(self.nowChapter)))
         if total_img_num == 1:
             self.next_purpose_page.setEnabled(False)
+
 
     # 设置实验任务图片的函数
     def set_tasks_img(self, index):
@@ -297,7 +323,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 判断是否为第一页
         if self.nowTaskImg <= 1:
             self.pre_tasks_page.setEnabled(False)
-            
+
     # 点击实验原理的下一页触发的事件
     def next_principle_page_click(self):
         # 当前页+1
@@ -347,7 +373,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 判断是否为第一页
         if self.nowEquipmentImg <= 1:
             self.pre_equipment_page.setEnabled(False)
-            
+
     # 点击实验步骤的下一页触发的事件(实现同实验原理)
     def next_steps_page_click(self):
         self.nowStepImg += 1
@@ -367,13 +393,15 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
     # 实验动画开始按钮点击
     def amination_in_click(self):
-        print("点击了实验动画开始按钮")
+        # TODO 这里要进入实验动画,可以做一个判断
+        print("进入实验动画")
         simulation = Simulation()
         simulation.verticalStackedWidget.setCurrentIndex(self.nowChapter - 1)
         simulation.show()
-        print("实验动画页面被关闭")
 
-
+    # 第五章数据处理的开始计算按钮绑定函数
+    def data_processing_5_date_calculate_click(self):
+        data_processing.data_processing_5_date_calculate_click(self)
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):
@@ -473,21 +501,20 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # tab栏宽度大概占窗口宽度1/9
         tab_width = str(window_width * 1 / 9)
         self.tabWidget_2.setStyleSheet("::tab{width: " + tab_width + ";\n"
-                                                                   "    height:50;\n"
-                                                                   "    background-color: rgb(128, 177, 198,100);\n"
-                                                                   "    border-right: 1px solid  rgb(200, 200, 200);\n"
-                                                                   "    font-size:20px;}\n"
-                                                                   "::tab:last {\n"
-                                                                   "    border:none;}\n"
-                                                                   "::tab:hover {\n"
-                                                                   "    background-color: rgb(128, 177, 198,150);\n"
-                                                                   "}\n"
-                                                                   "::tab:selected {\n"
-                                                                   "    background-color: rgb(128, 177, 198);\n"
-                                                                   "}")
+                                                                     "    height:50;\n"
+                                                                     "    background-color: rgb(128, 177, 198,100);\n"
+                                                                     "    border-right: 1px solid  rgb(200, 200, 200);\n"
+                                                                     "    font-size:20px;}\n"
+                                                                     "::tab:last {\n"
+                                                                     "    border:none;}\n"
+                                                                     "::tab:hover {\n"
+                                                                     "    background-color: rgb(128, 177, 198,150);\n"
+                                                                     "}\n"
+                                                                     "::tab:selected {\n"
+                                                                     "    background-color: rgb(128, 177, 198);\n"
+                                                                     "}")
 
     # 导出实验报告
     def select_report(self):
         if (self.nowChapter == 1):
             function.report_1.get_data(self)
-
