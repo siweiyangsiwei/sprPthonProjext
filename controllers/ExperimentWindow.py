@@ -210,7 +210,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
 
         # 将实验数据处理的页面调整到当前的实验页面
-        self.stackedWidget_2.setCurrentIndex(self.nowChapter - 1)
+        # self.stackedWidget_2.setCurrentIndex(self.nowChapter - 1)
 
     # 开始学习按钮的点击触发事件
     def start_learn(self):
