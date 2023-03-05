@@ -223,7 +223,3 @@ def data_processing_5_date_calculate_click(self):
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.data_processing_5_img.setScaledContents(True)
         self.data_processing_5_img.setPixmap(image)
-
-def data_processing_7_data_calculate_click(self):
-    print('开始第七章的实验数据处理')
-    

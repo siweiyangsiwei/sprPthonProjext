@@ -1,15 +1,16 @@
 import os.path
 from PyQt5 import QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-from function import data_processing
+from calculate import exp_5, exp_7
 import function.report_1
 import calculate.exp_1
 import calculate.exp_2
 import calculate.exp_3
+
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 记录当前正在学习的章节
@@ -116,7 +117,6 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         self.amination_in.clicked.connect(self.amination_in_click)
 
-
         self.shutdown.clicked.connect(lambda: self.close())
         self.mini.clicked.connect(lambda: self.showMinimized())
         self.back.clicked.connect(self.back_main)
@@ -167,6 +167,8 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 第五章实验数据开始处理触发的事件
         self.data_processing_5_date_calculate.clicked.connect(self.data_processing_5_date_calculate_click)
 
+        # 第七章实验数据处理表3设计
+        self.data_processing_7_table_3.setSpan(0, 0, 1, 3)
         # 第七章实验数据开始处理触发的事件
         self.data_processing_7_data_calculate.clicked.connect(self.data_processing_7_data_calculate_click)
 
@@ -205,9 +207,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.answerList = []
 
         # 初始化章节对应的数据处理页面
-        self.calculate_stackWiget.setCurrentIndex(self.nowChapter-1)
-
-
+        self.calculate_stackWiget.setCurrentIndex(self.nowChapter - 1)
 
         # 将实验数据处理的页面调整到当前的实验页面
         # self.stackedWidget_2.setCurrentIndex(self.nowChapter - 1)
@@ -423,10 +423,12 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
     # 第五章数据处理的开始计算按钮绑定函数
     def data_processing_5_date_calculate_click(self):
-        data_processing.data_processing_5_date_calculate_click(self)
+        exp_5.data_processing_5_date_calculate_click(self)
 
+    # 第七章数据处理的开始计算按钮绑定函数
     def data_processing_7_data_calculate_click(self):
-        data_processing.data_processing_7_data_calculate_click(self)
+        exp_7.data_processing_7_data_calculate_click(self)
+
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):
@@ -526,18 +528,19 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # tab栏宽度大概占窗口宽度1/9
         tab_width = str(window_width * 1 / 9)
         self.tabWidget_2.setStyleSheet("::tab{width: " + tab_width + ";\n"
-                                                                   "    height:50;\n"
-                                                                   "    background-color: rgb(128, 177, 198,100);\n"
-                                                                   "    border-right: 1px solid  rgb(200, 200, 200);\n"
-                                                                   "    font-size:20px;}\n"
-                                                                   "::tab:last {\n"
-                                                                   "    border:none;}\n"
-                                                                   "::tab:hover {\n"
-                                                                   "    background-color: rgb(128, 177, 198,150);\n"
-                                                                   "}\n"
-                                                                   "::tab:selected {\n"
-                                                                   "    background-color: rgb(128, 177, 198);\n"
-                                                                   "}")
+                                                                     "    height:50;\n"
+                                                                     "    background-color: rgb(128, 177, 198,100);\n"
+                                                                     "    border-right: 1px solid  rgb(200, 200, 200);\n"
+                                                                     "    font-size:20px;}\n"
+                                                                     "::tab:last {\n"
+                                                                     "    border:none;}\n"
+                                                                     "::tab:hover {\n"
+                                                                     "    background-color: rgb(128, 177, 198,150);\n"
+                                                                     "}\n"
+                                                                     "::tab:selected {\n"
+                                                                     "    background-color: rgb(128, 177, 198);\n"
+                                                                     "}")
+
     # 表格均分
     def table_style(self):
         # 实验一表格
@@ -562,4 +565,3 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def select_report(self):
         if (self.nowChapter == 1):
             function.report_1.get_data(self)
-

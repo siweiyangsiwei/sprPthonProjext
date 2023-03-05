@@ -2792,7 +2792,7 @@ QPushBotton:hover{
                             <property name="geometry">
                              <rect>
                               <x>0</x>
-                              <y>-57</y>
+                              <y>0</y>
                               <width>1121</width>
                               <height>3000</height>
                              </rect>
@@ -3418,7 +3418,7 @@ QPushBotton:hover{
                             <property name="geometry">
                              <rect>
                               <x>0</x>
-                              <y>0</y>
+                              <y>-1171</y>
                               <width>1111</width>
                               <height>2000</height>
                              </rect>
@@ -3688,11 +3688,6 @@ QPushBotton:hover{
                              </attribute>
                              <row>
                               <property name="text">
-                               <string>实验次数</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
                                <string>原料液浓度%(摩尔分数)</string>
                               </property>
                              </row>
@@ -3709,11 +3704,6 @@ QPushBotton:hover{
                              <row>
                               <property name="text">
                                <string>精馏进料温度(℃)</string>
-                              </property>
-                             </row>
-                             <row>
-                              <property name="text">
-                               <string>新建行</string>
                               </property>
                              </row>
                              <row>
@@ -3844,6 +3834,85 @@ QPushBotton:hover{
                              </property>
                              <property name="text">
                               <string>开始计算</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_53">
+                             <property name="geometry">
+                              <rect>
+                               <x>340</x>
+                               <y>80</y>
+                               <width>171</width>
+                               <height>16</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>图解法计算所得理论板数:</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_7_data_num_of_pic">
+                             <property name="geometry">
+                              <rect>
+                               <x>480</x>
+                               <y>70</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                            </widget>
+                            <widget class="QTableWidget" name="data_processing_7_table_3">
+                             <property name="geometry">
+                              <rect>
+                               <x>30</x>
+                               <y>1440</y>
+                               <width>941</width>
+                               <height>131</height>
+                              </rect>
+                             </property>
+                             <attribute name="horizontalHeaderDefaultSectionSize">
+                              <number>270</number>
+                             </attribute>
+                             <row>
+                              <property name="text">
+                               <string>全塔效率或等板高度</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>回流比R</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>q</string>
+                              </property>
+                             </row>
+                             <column>
+                              <property name="text">
+                               <string>1</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>2</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>3</string>
+                              </property>
+                             </column>
+                            </widget>
+                            <widget class="QLabel" name="label_54">
+                             <property name="geometry">
+                              <rect>
+                               <x>490</x>
+                               <y>1410</y>
+                               <width>54</width>
+                               <height>12</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>计算结果</string>
                              </property>
                             </widget>
                            </widget>
