@@ -217,9 +217,9 @@ def data_processing_5_date_calculate_click(self):
 
         plt.xlabel('q')
         plt.ylabel('q/t')
-        plt.savefig('./data/img/data.png')
+        plt.savefig('./data/img/exp_5_data.png')
 
-        img = os.path.abspath("data/img/data.png")
+        img = os.path.abspath("./data/img/exp_5_data.png")
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.data_processing_5_img.setScaledContents(True)
         self.data_processing_5_img.setPixmap(image)

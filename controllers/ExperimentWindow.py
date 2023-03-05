@@ -1,3 +1,4 @@
+
 import os.path
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
@@ -5,11 +6,12 @@ from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-from calculate import exp_5, exp_7
+from calculate import exp_5, exp_7, exp_8
 import function.report_1
 import calculate.exp_1
 import calculate.exp_2
 import calculate.exp_3
+
 
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
@@ -171,6 +173,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.data_processing_7_table_3.setSpan(0, 0, 1, 3)
         # 第七章实验数据开始处理触发的事件
         self.data_processing_7_data_calculate.clicked.connect(self.data_processing_7_data_calculate_click)
+
+        # 第八章实验数据处理开始处理触发的事件
+        self.data_processing_8_data_calculate.clicked.connect(self.data_processing_8_data_calculate_click)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -429,6 +434,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def data_processing_7_data_calculate_click(self):
         exp_7.data_processing_7_data_calculate_click(self)
 
+    # 第八章数据处理的开始计算按钮绑定函数
+    def data_processing_8_data_calculate_click(self):
+        exp_8.data_processing_8_data_calculate_click(self)
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):
