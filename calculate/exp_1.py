@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
+# 实验一数据处理
 # 雷诺数计算
 def calculate_data1(self):
     try:

@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
-# 实验二
+# 实验二数据处理
 def calculate_data2(self):
     try:
         # 获取基本数据：

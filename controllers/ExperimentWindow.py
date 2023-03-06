@@ -5,11 +5,8 @@ from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-from calculate import exp_5, exp_7
 import function.report_1
-import calculate.exp_1
-import calculate.exp_2
-import calculate.exp_3
+from calculate import exp_1, exp_2, exp_3, exp_4, exp_5, exp_6, exp_7
 
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
@@ -126,21 +123,26 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.exp_report.clicked.connect(self.select_report)
 
         # 计算按键触发事件
-        self.calculate_1.clicked.connect(lambda: calculate.exp_1.calculate_data1(self))
-        self.calculate_2.clicked.connect(lambda: calculate.exp_2.calculate_data2(self))
-        self.calculate_3a.clicked.connect(lambda: calculate.exp_3.calculate_data_3a(self))
-        self.calculate_3b.clicked.connect(lambda: calculate.exp_3.calculate_data_3b(self))
-        self.calculate_3c.clicked.connect(lambda: calculate.exp_3.calculate_data_3c(self))
+        self.calculate_1.clicked.connect(lambda: exp_1.calculate_data1(self))
+        self.calculate_2.clicked.connect(lambda: exp_2.calculate_data2(self))
+        self.calculate_3a.clicked.connect(lambda: exp_3.calculate_data_3a(self))
+        self.calculate_3b.clicked.connect(lambda: exp_3.calculate_data_3b(self))
+        self.calculate_3c.clicked.connect(lambda: exp_3.calculate_data_3c(self))
+        self.calculate_4.clicked.connect(lambda: exp_4.calculate_data_4(self))
+        self.calculate_6.clicked.connect(lambda: exp_6.calculate_data_6(self))
 
         # 作图按键触发事件
-        self.get_pic_3a.clicked.connect(lambda: calculate.exp_3.get_pic_3a(self))
+        self.get_pic_3a.clicked.connect(lambda: exp_3.get_pic_3a(self))
+        self.get_pic_3b.clicked.connect(lambda: exp_3.get_pic_3b(self))
+        self.get_pic_4.clicked.connect(lambda: exp_4.get_pic_4(self))
+        self.get_pic_6.clicked.connect(lambda: exp_6.get_pic_6(self))
 
         # 重置数据
-        self.reset_1.clicked.connect(lambda: calculate.exp_1.reset_pic(self))
-        self.reset_2.clicked.connect(lambda: calculate.exp_2.reset_pic(self))
-        self.reset_3a.clicked.connect(lambda: calculate.exp_3.reset_pic_3a(self))
-        self.reset_3b.clicked.connect(lambda: calculate.exp_3.reset_pic_3b(self))
-        self.reset_3c.clicked.connect(lambda: calculate.exp_3.reset_pic_3c(self))
+        self.reset_1.clicked.connect(lambda: exp_1.reset_pic(self))
+        self.reset_2.clicked.connect(lambda: exp_2.reset_pic(self))
+        self.reset_3a.clicked.connect(lambda: exp_3.reset_pic_3a(self))
+        self.reset_3b.clicked.connect(lambda: exp_3.reset_pic_3b(self))
+        self.reset_3c.clicked.connect(lambda: exp_3.reset_pic_3c(self))
 
         # 第五章数据处理第一个表格的设计
         self.data_processing_5_table_1.setSpan(0, 0, 10, 1)
@@ -560,6 +562,16 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.exp_data_3b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         self.exp_data_3c.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         self.exp_data_3c.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # 实验四表格
+        self.exp_data_4a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_4a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_4b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_4b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        # 实验六表格
+        self.exp_data_6a.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_6a.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_6b.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.exp_data_6b.verticalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
     # 导出实验报告
     def select_report(self):
