@@ -1,17 +1,19 @@
-
 import os.path
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
+from matplotlib import pyplot as plt
+import matplotlib as mpl
+import numpy as np
+
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-from calculate import exp_5, exp_7, exp_8
+from calculate import exp_5, exp_7, exp_8, exp_9
 import function.report_1
 import calculate.exp_1
 import calculate.exp_2
 import calculate.exp_3
-
 
 
 class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
@@ -48,6 +50,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def __init__(self):
         super(ExperimentWindow, self).__init__()
         self.setupUi(self)
+
+        mpl.rcParams['font.family'] = 'SimHei'
+        plt.rcParams['axes.unicode_minus'] = False
 
         # 根据分辨率设置窗口大小
         desktop = QApplication.desktop()
@@ -176,6 +181,24 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         # 第八章实验数据处理开始处理触发的事件
         self.data_processing_8_data_calculate.clicked.connect(self.data_processing_8_data_calculate_click)
+
+        # 第九章实验数据处理表格设计
+        for i in range(int(self.data_processing_9_table.rowCount() / 2)):
+            self.data_processing_9_table.setSpan(i * 2, 0, 2, 1)
+            self.data_processing_9_table.setSpan(i * 2, 1, 2, 1)
+            if i == 0:
+                self.data_processing_9_table.setSpan(i * 2, 2, 3, 1)
+                self.data_processing_9_table.setSpan(i * 2, 3, 3, 1)
+                self.data_processing_9_table.setSpan(i * 2, 4, 3, 1)
+                self.data_processing_9_table.setSpan(i * 2, 5, 3, 1)
+            else:
+                self.data_processing_9_table.setSpan(i * 2 + 1, 2, 2, 1)
+                self.data_processing_9_table.setSpan(i * 2 + 1, 3, 2, 1)
+                self.data_processing_9_table.setSpan(i * 2 + 1, 4, 2, 1)
+                self.data_processing_9_table.setSpan(i * 2 + 1, 5, 2, 1)
+
+        # 第九章实验数据处理开始处理触发的事件
+        self.data_processing_9_data_calculate.clicked.connect(self.data_processing_9_data_calculate_click)
 
     # 章节改变的事件
     def chapter_click(self, num):
@@ -437,6 +460,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 第八章数据处理的开始计算按钮绑定函数
     def data_processing_8_data_calculate_click(self):
         exp_8.data_processing_8_data_calculate_click(self)
+
+    # 第九章数据处理的开始计算按钮绑定函数
+    def data_processing_9_data_calculate_click(self):
+        exp_9.data_processing_9_data_calculate_click(self)
+
 
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):

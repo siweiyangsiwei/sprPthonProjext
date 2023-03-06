@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 
 
 def data_processing_8_data_calculate_click(self):
-    if (self.data_processing_8_date == ''
-            or self.data_processing_8_data_height == ''
-            or self.data_processing_8_data_diameter == ''
-            or self.data_processing_8_data_specification == ''
-            or self.data_processing_8_data_pressure == ''
-            or self.data_processing_8_data_temp == ''
-            or self.data_processing_8_data_T == ''
-            or self.data_processing_8_data_P == ''):
+    if (self.data_processing_8_date.text() == ''
+            or self.data_processing_8_data_height.text() == ''
+            or self.data_processing_8_data_diameter.text() == ''
+            or self.data_processing_8_data_specification.text() == ''
+            or self.data_processing_8_data_pressure.text() == ''
+            or self.data_processing_8_data_temp.text() == ''
+            or self.data_processing_8_data_T.text() == ''
+            or self.data_processing_8_data_P.text() == ''):
         print("请填写完整的信息")
         return
     # 实验日期

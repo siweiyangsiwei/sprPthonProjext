@@ -833,7 +833,7 @@ QPushBotton:hover{
                        <item>
                         <widget class="QStackedWidget" name="calculate_stackWiget">
                          <property name="currentIndex">
-                          <number>5</number>
+                          <number>6</number>
                          </property>
                          <widget class="QWidget" name="page">
                           <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -3935,7 +3935,7 @@ QPushBotton:hover{
                             <property name="geometry">
                              <rect>
                               <x>0</x>
-                              <y>-855</y>
+                              <y>0</y>
                               <width>1349</width>
                               <height>2000</height>
                              </rect>
@@ -4858,6 +4858,661 @@ QPushBotton:hover{
                              </property>
                              <property name="text">
                               <string>放置图片</string>
+                             </property>
+                            </widget>
+                           </widget>
+                          </widget>
+                         </widget>
+                         <widget class="QWidget" name="page_8">
+                          <widget class="QScrollArea" name="data_processing_9_contain">
+                           <property name="geometry">
+                            <rect>
+                             <x>-11</x>
+                             <y>-11</y>
+                             <width>1351</width>
+                             <height>851</height>
+                            </rect>
+                           </property>
+                           <property name="widgetResizable">
+                            <bool>false</bool>
+                           </property>
+                           <widget class="QWidget" name="data_processing_9_content">
+                            <property name="geometry">
+                             <rect>
+                              <x>0</x>
+                              <y>-100</y>
+                              <width>1349</width>
+                              <height>2000</height>
+                             </rect>
+                            </property>
+                            <widget class="QTableWidget" name="data_processing_9_table">
+                             <property name="geometry">
+                              <rect>
+                               <x>60</x>
+                               <y>210</y>
+                               <width>1241</width>
+                               <height>701</height>
+                              </rect>
+                             </property>
+                             <attribute name="horizontalHeaderDefaultSectionSize">
+                              <number>200</number>
+                             </attribute>
+                             <attribute name="verticalHeaderDefaultSectionSize">
+                              <number>23</number>
+                             </attribute>
+                             <row>
+                              <property name="text">
+                               <string>1</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>2</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>3</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>4</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>5</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>6</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>7</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>8</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>9</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>10</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>11</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>12</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>13</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>14</string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string> </string>
+                              </property>
+                             </row>
+                             <row>
+                              <property name="text">
+                               <string>15</string>
+                              </property>
+                             </row>
+                             <column>
+                              <property name="text">
+                               <string>湿物料质量Gi(g)</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>湿物料含水量Xi(kg水/kg绝干料)(自动填写)</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>湿物料平均含水量(kg水/kg绝干料)(自动填写)</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>汽化水分量△W(g)(自动填写)</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>时间间隔△t(m,s)</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>干燥速率U(kg/m²,s)(自动填写)</string>
+                              </property>
+                             </column>
+                             <item row="0" column="0">
+                              <property name="text">
+                               <string>10</string>
+                              </property>
+                             </item>
+                             <item row="0" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="0" column="4">
+                              <property name="text">
+                               <string>2</string>
+                              </property>
+                             </item>
+                             <item row="2" column="0">
+                              <property name="text">
+                               <string>9</string>
+                              </property>
+                             </item>
+                             <item row="2" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="3" column="4">
+                              <property name="text">
+                               <string>24</string>
+                              </property>
+                             </item>
+                             <item row="4" column="0">
+                              <property name="text">
+                               <string>8</string>
+                              </property>
+                             </item>
+                             <item row="4" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="5" column="4">
+                              <property name="text">
+                               <string>35</string>
+                              </property>
+                             </item>
+                             <item row="6" column="0">
+                              <property name="text">
+                               <string>7</string>
+                              </property>
+                             </item>
+                             <item row="6" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="7" column="4">
+                              <property name="text">
+                               <string>35</string>
+                              </property>
+                             </item>
+                             <item row="8" column="0">
+                              <property name="text">
+                               <string>6</string>
+                              </property>
+                             </item>
+                             <item row="8" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="9" column="4">
+                              <property name="text">
+                               <string>35</string>
+                              </property>
+                             </item>
+                             <item row="10" column="0">
+                              <property name="text">
+                               <string>5</string>
+                              </property>
+                             </item>
+                             <item row="10" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="11" column="4">
+                              <property name="text">
+                               <string>53</string>
+                              </property>
+                             </item>
+                             <item row="12" column="0">
+                              <property name="text">
+                               <string>4</string>
+                              </property>
+                             </item>
+                             <item row="12" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="13" column="4">
+                              <property name="text">
+                               <string>56</string>
+                              </property>
+                             </item>
+                             <item row="14" column="0">
+                              <property name="text">
+                               <string>3</string>
+                              </property>
+                             </item>
+                             <item row="14" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="15" column="4">
+                              <property name="text">
+                               <string>63</string>
+                              </property>
+                             </item>
+                             <item row="16" column="0">
+                              <property name="text">
+                               <string>2</string>
+                              </property>
+                             </item>
+                             <item row="16" column="1">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="17" column="4">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                             <item row="19" column="4">
+                              <property name="text">
+                               <string/>
+                              </property>
+                             </item>
+                            </widget>
+                            <widget class="QLabel" name="label_70">
+                             <property name="geometry">
+                              <rect>
+                               <x>50</x>
+                               <y>20</y>
+                               <width>54</width>
+                               <height>12</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>实验日期:</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_date">
+                             <property name="geometry">
+                              <rect>
+                               <x>110</x>
+                               <y>10</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_71">
+                             <property name="geometry">
+                              <rect>
+                               <x>50</x>
+                               <y>70</y>
+                               <width>54</width>
+                               <height>12</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>干燥介质:</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="lineEdit_2">
+                             <property name="geometry">
+                              <rect>
+                               <x>110</x>
+                               <y>60</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>热空气</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_72">
+                             <property name="geometry">
+                              <rect>
+                               <x>370</x>
+                               <y>70</y>
+                               <width>54</width>
+                               <height>12</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>物料尺寸:</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_size">
+                             <property name="geometry">
+                              <rect>
+                               <x>430</x>
+                               <y>60</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_73">
+                             <property name="geometry">
+                              <rect>
+                               <x>700</x>
+                               <y>70</y>
+                               <width>111</width>
+                               <height>16</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>物料的绝干质量(g):</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_weight">
+                             <property name="geometry">
+                              <rect>
+                               <x>810</x>
+                               <y>60</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>100</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_74">
+                             <property name="geometry">
+                              <rect>
+                               <x>30</x>
+                               <y>110</y>
+                               <width>81</width>
+                               <height>16</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>干燥室截面积:</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="lineEdit_5">
+                             <property name="geometry">
+                              <rect>
+                               <x>110</x>
+                               <y>100</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>0.19m×0.19m=0.0361m²</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_75">
+                             <property name="geometry">
+                              <rect>
+                               <x>320</x>
+                               <y>110</y>
+                               <width>111</width>
+                               <height>20</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>室前干球温度(℃):</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_fgtemp">
+                             <property name="geometry">
+                              <rect>
+                               <x>430</x>
+                               <y>100</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_76">
+                             <property name="geometry">
+                              <rect>
+                               <x>700</x>
+                               <y>110</y>
+                               <width>111</width>
+                               <height>20</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>室前湿球温度(℃):</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_fstemp">
+                             <property name="geometry">
+                              <rect>
+                               <x>810</x>
+                               <y>100</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_77">
+                             <property name="geometry">
+                              <rect>
+                               <x>1020</x>
+                               <y>110</y>
+                               <width>111</width>
+                               <height>20</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>室后干球温度(℃):</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_bgtemp">
+                             <property name="geometry">
+                              <rect>
+                               <x>1120</x>
+                               <y>100</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_78">
+                             <property name="geometry">
+                              <rect>
+                               <x>30</x>
+                               <y>160</y>
+                               <width>171</width>
+                               <height>16</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>孔板流量计空气流量(m³/h):</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_flow">
+                             <property name="geometry">
+                              <rect>
+                               <x>180</x>
+                               <y>150</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="label_88">
+                             <property name="geometry">
+                              <rect>
+                               <x>440</x>
+                               <y>160</y>
+                               <width>111</width>
+                               <height>21</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>风机出口压力(KPa):</string>
+                             </property>
+                            </widget>
+                            <widget class="QLineEdit" name="data_processing_9_data_pressure">
+                             <property name="geometry">
+                              <rect>
+                               <x>560</x>
+                               <y>150</y>
+                               <width>191</width>
+                               <height>31</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                            </widget>
+                            <widget class="QPushButton" name="data_processing_9_data_calculate">
+                             <property name="geometry">
+                              <rect>
+                               <x>1090</x>
+                               <y>160</y>
+                               <width>171</width>
+                               <height>41</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>开始计算</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="data_processing_9_data_pic_1">
+                             <property name="geometry">
+                              <rect>
+                               <x>80</x>
+                               <y>960</y>
+                               <width>501</width>
+                               <height>351</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>恒定干燥条件下的干燥曲线</string>
+                             </property>
+                            </widget>
+                            <widget class="QLabel" name="data_processing_9_data_pic_2">
+                             <property name="geometry">
+                              <rect>
+                               <x>630</x>
+                               <y>960</y>
+                               <width>501</width>
+                               <height>351</height>
+                              </rect>
+                             </property>
+                             <property name="text">
+                              <string>恒定干燥条件下的干燥曲线</string>
                              </property>
                             </widget>
                            </widget>
