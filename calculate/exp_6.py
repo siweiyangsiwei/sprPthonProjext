@@ -7,7 +7,7 @@ from sklearn.metrics import r2_score
 
 # 实验六数据处理
 def calculate_data_6(self):
-    # try:
+    try:
         # 获取基本参数:
         # 大气压
         P_0 = float(self.p6.text())
@@ -79,16 +79,14 @@ def calculate_data_6(self):
             self.exp_data_6b.setItem(i, 3, QtWidgets.QTableWidgetItem(str(Nu[i])))
 
 
-    # except:
-    #     QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)
+    except:
+        QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)
 
 # 作图Nu~Re
 def get_pic_6(self):
     Q = []
     Re = []
     Nu = []
-    logRe = []
-    logNu = []
     for i in range(0, 7):
         # # 获取流量
         # Q.append(float(self.exp_data_6b.item(i, 0).text()))

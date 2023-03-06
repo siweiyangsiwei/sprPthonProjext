@@ -3,7 +3,6 @@ from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 from matplotlib import pyplot as plt
 import matplotlib as mpl
-import numpy as np
 
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
