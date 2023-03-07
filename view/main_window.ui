@@ -217,7 +217,7 @@ QPushBotton:hover{
 </string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <property name="iconSize">
              <size>
@@ -479,7 +479,7 @@ border-radius:0;</string>
                  </widget>
                 </item>
                 <item alignment="Qt::AlignRight">
-                 <widget class="QPushButton" name="button_next">
+                 <widget class="QPushButton" name="next_btn">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>

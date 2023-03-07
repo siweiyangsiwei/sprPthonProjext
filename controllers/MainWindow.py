@@ -2,12 +2,14 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import QtGui
 from view.main_window import Ui_MainWindow
 from controllers.ExperimentWindow import ExperimentWindow
+from function import safe_test_fn
 
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.run()
+        safe_test_fn.show_test(self)
 
     def run(self):
         # 双击打开实验窗口
