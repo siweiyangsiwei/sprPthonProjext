@@ -1,0 +1,29 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>a-duizhengquedagou.png</file>
+    <file>IMG_6560(20220509-180631).png</file>
+    <file>IMG_6560(20220509-180631).WEBP</file>
+    <file>liangtong.png</file>
+    <file>miaobiao.png</file>
+    <file>Screen Shot 2022-05-09 at 17.52.18.png</file>
+    <file>Screen Shot 2022-05-09 at 18.03.25.png</file>
+    <file>Screen Shot 2022-05-09 at 23.10.32.png</file>
+    <file>src=http---gbres.dfcfw.com-Files-picture-20160127-BF6B0B957EBB57D867DCE2525009E5AA.jpg&amp;refer=http---gbres.dfcfw.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto.webp</file>
+    <file>water.webp</file>
+    <file>xiazailan.png</file>
+    <file>xingxing.png</file>
+    <file>ziyuan.png</file>
+    <file>孟菲斯-斜立方体.png</file>
+  </qresource>
+  <qresource prefix="experiment">
+    <file>1s.png</file>
+    <file>2s.png</file>
+    <file>3s.png</file>
+    <file>4s.png</file>
+    <file>5s.png</file>
+    <file>6s.png</file>
+    <file>7j.png</file>
+    <file>8-1.png</file>
+    <file>9s.png</file>
+  </qresource>
+</RCC>

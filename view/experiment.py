@@ -464,8 +464,9 @@ class Ui_ExperimentWindow(object):
         self.experment_amination = QtWidgets.QWidget()
         self.experment_amination.setObjectName("experment_amination")
         self.amination_in = QtWidgets.QPushButton(self.experment_amination)
-        self.amination_in.setGeometry(QtCore.QRect(120, 160, 1151, 531))
-        self.amination_in.setStyleSheet("font: 36pt \"宋体\";")
+        self.amination_in.setGeometry(QtCore.QRect(31, 25, 501, 341))
+        self.amination_in.setStyleSheet("font: 36pt \"宋体\";\n"
+"background-color: rgb(0, 170, 255);")
         self.amination_in.setObjectName("amination_in")
         self.tabWidget_2.addTab(self.experment_amination, "")
         self.data_processing = QtWidgets.QWidget()
@@ -2760,7 +2761,7 @@ class Ui_ExperimentWindow(object):
 
         self.retranslateUi(ExperimentWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(7)
+        self.tabWidget_2.setCurrentIndex(6)
         self.calculate_stackWiget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(ExperimentWindow)
 
@@ -4123,3 +4124,13 @@ class Ui_ExperimentWindow(object):
         self.data_processing_9_data_pic_2.setText(_translate("ExperimentWindow", "恒定干燥条件下的干燥曲线"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.data_processing), _translate("ExperimentWindow", "数据处理"))
 import res_rc
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    ExperimentWindow = QtWidgets.QMainWindow()
+    ui = Ui_ExperimentWindow()
+    ui.setupUi(ExperimentWindow)
+    ExperimentWindow.show()
+    sys.exit(app.exec_())
