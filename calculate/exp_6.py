@@ -4,6 +4,8 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import r2_score
+from mpl_toolkits.axisartist.parasite_axes import HostAxes, ParasiteAxes
+
 
 # 实验六数据处理
 def calculate_data_6(self):
@@ -84,53 +86,48 @@ def calculate_data_6(self):
 
 # 作图Nu~Re
 def get_pic_6(self):
-    Q = []
-    Re = []
-    Nu = []
-    for i in range(0, 7):
-        # # 获取流量
-        # Q.append(float(self.exp_data_6b.item(i, 0).text()))
-        # 获取Re
-        Re.append(float(self.exp_data_6b.item(i, 2).text()))
-        # 获取Nu
-        Nu.append(float(self.exp_data_6b.item(i, 3).text()))
+    try:
+        Q = []
+        Re = []
+        Nu = []
+        for i in range(0, 7):
+            # # 获取流量
+            # Q.append(float(self.exp_data_6b.item(i, 0).text()))
+            # 获取Re
+            Re.append(float(self.exp_data_6b.item(i, 2).text()))
+            # 获取Nu
+            Nu.append(float(self.exp_data_6b.item(i, 3).text()))
 
-    # 取对数
-    logRe = np.log(Re)
-    logNu = np.log(Nu)
+        # 取对数
+        logRe = np.log(Re)
+        logNu = np.log(Nu)
 
-    plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # 中文字体显示
-    plt.rcParams.update({"font.size": 10})  # 此处必须添加此句代码方可改变标题字体大小
+        plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # 中文字体显示
+        plt.rcParams.update({"font.size": 10})  # 此处必须添加此句代码方可改变标题字体大小
 
-    # 画布
-    figure = plt.figure()
-    canvas = FigureCanvas(figure)
-    g = QtWidgets.QGraphicsScene()
-    g.addWidget(canvas)
-    figure.set_tight_layout
-
-    # 公式
-    # 一次线性方程
-    z = np.polyfit(logRe, logNu, 1)
-    p = np.poly1d(z)
-    # 代公式
-    yvals = p(logRe)
-    # 相关系数R2
-    r2 = round(r2_score(logNu, yvals), 4)
-    # 完整公式
-    text = 'y=' + str(p).strip() + '\n' + "R\u00b2=" + str(r2).strip()
-    # 显示公式
-    plt.text(np.average(logRe), (np.average(logNu)), text, size=12, family="Times new roman", color="black",
-             style='italic', weight='light')
-
-    # 画图
-    feature_6 = figure.subplots(1, 1)
-    feature_6.plot(logRe, logNu, 's', label="original values")
-    feature_6.set_title('Nu~Re曲线')
-    feature_6.set_ylabel('logNu', fontsize=10)
-    feature_6.set_xlabel('logRe', fontsize=10)
-    feature_6.plot(logRe, yvals, 'r', label="polyfit values")
-    feature_6.legend()
-
-    canvas.draw()
-    plt.show()
+        fig = plt.figure(1)
+        host = HostAxes(fig, [0.15, 0.1, 0.65, 0.8])
+        host.set_ylabel('ln(Nu)')
+        host.set_xlabel('ln(Re)')
+        fig.add_axes(host)
+        p1, = host.plot(logRe, logNu, 's', label="original values")
+        host.set_title('ln(Nu)-ln(Re)曲线')
+        # 公式
+        # 一次线性方程
+        z = np.polyfit(logRe, logNu, 1)
+        p = np.poly1d(z)
+        # 代公式
+        yvals = p(logRe)
+        # 拟合曲线
+        host.plot(logRe, yvals, 'r', label='polyfit values')
+        # 相关系数R2
+        r2 = round(r2_score(logNu, yvals), 4)
+        # 完整公式
+        text = 'y=' + str(p).strip() + '\n' + "R\u00b2=" + str(r2).strip()
+        # 显示公式
+        plt.text(np.average(logRe)+0.1, (np.average(logNu)), text, size=12, family="Times new roman", color="black",
+                 style='italic', weight='light')
+        host.legend()
+        plt.show()
+    except:
+        QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)
