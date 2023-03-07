@@ -36,7 +36,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -357,7 +357,7 @@ QPushBotton:hover{
 </string>
                      </property>
                      <property name="currentIndex">
-                      <number>6</number>
+                      <number>7</number>
                      </property>
                      <widget class="QWidget" name="tab">
                       <attribute name="title">
@@ -811,30 +811,18 @@ QPushBotton:hover{
                       <widget class="QPushButton" name="amination_in">
                        <property name="geometry">
                         <rect>
-                         <x>170</x>
-                         <y>140</y>
-                         <width>1001</width>
-                         <height>591</height>
+                         <x>120</x>
+                         <y>160</y>
+                         <width>1151</width>
+                         <height>531</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 36pt &quot;宋体&quot;;
-background-color: rgb(0, 170, 255);</string>
+                        <string notr="true">font: 36pt &quot;宋体&quot;;</string>
                        </property>
                        <property name="text">
                         <string>进入实验动画模拟</string>
                        </property>
-                      </widget>
-                      <widget class="QWidget" name="horizontalLayoutWidget">
-                       <property name="geometry">
-                        <rect>
-                         <x>-10</x>
-                         <y>10</y>
-                         <width>1381</width>
-                         <height>861</height>
-                        </rect>
-                       </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_2"/>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="data_processing">
@@ -845,7 +833,7 @@ background-color: rgb(0, 170, 255);</string>
                        <item>
                         <widget class="QStackedWidget" name="calculate_stackWiget">
                          <property name="currentIndex">
-                          <number>2</number>
+                          <number>5</number>
                          </property>
                          <widget class="QWidget" name="page">
                           <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -2228,6 +2216,12 @@ background-color: rgb(0, 170, 255);</string>
                              </item>
                              <item row="6" column="0">
                               <widget class="QTableWidget" name="exp_data_3c">
+                               <attribute name="horizontalHeaderVisible">
+                                <bool>false</bool>
+                               </attribute>
+                               <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                                <bool>false</bool>
+                               </attribute>
                                <attribute name="horizontalHeaderStretchLastSection">
                                 <bool>true</bool>
                                </attribute>
@@ -2236,7 +2230,7 @@ background-color: rgb(0, 170, 255);</string>
                                </attribute>
                                <row>
                                 <property name="text">
-                                 <string>项目</string>
+                                 <string>阀门开度</string>
                                 </property>
                                </row>
                                <row>
@@ -2256,7 +2250,7 @@ background-color: rgb(0, 170, 255);</string>
                                </row>
                                <column>
                                 <property name="text">
-                                 <string>阀门开度</string>
+                                 <string/>
                                 </property>
                                </column>
                                <column>
@@ -2356,27 +2350,27 @@ background-color: rgb(0, 170, 255);</string>
                                </item>
                                <item row="3" column="0">
                                 <property name="text">
-                                 <string>542.38</string>
+                                 <string/>
                                 </property>
                                </item>
                                <item row="3" column="1">
                                 <property name="text">
-                                 <string>118.17</string>
+                                 <string/>
                                 </property>
                                </item>
                                <item row="3" column="2">
                                 <property name="text">
-                                 <string>39.27</string>
+                                 <string/>
                                 </property>
                                </item>
                                <item row="3" column="3">
                                 <property name="text">
-                                 <string>14.85</string>
+                                 <string/>
                                 </property>
                                </item>
                                <item row="3" column="4">
                                 <property name="text">
-                                 <string>0.837</string>
+                                 <string/>
                                 </property>
                                </item>
                               </widget>
@@ -2421,7 +2415,7 @@ background-color: rgb(0, 170, 255);</string>
                                <item>
                                 <widget class="QLabel" name="label_30">
                                  <property name="text">
-                                  <string>mm</string>
+                                  <string>m</string>
                                  </property>
                                 </widget>
                                </item>
@@ -4657,7 +4651,7 @@ background-color: rgb(0, 170, 255);</string>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="QLineEdit" name="lineEdit">
+                                <widget class="QLineEdit" name="type_6">
                                  <property name="text">
                                   <string>1</string>
                                  </property>

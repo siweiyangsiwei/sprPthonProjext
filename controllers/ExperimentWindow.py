@@ -8,7 +8,7 @@ from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-import function.report_1
+from function import report_1, report_2, report_3, report_4,report_6
 from calculate import exp_1, exp_2, exp_3, exp_4, exp_5, exp_6, exp_7, exp_8, exp_9
 
 
@@ -611,4 +611,13 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 导出实验报告
     def select_report(self):
         if (self.nowChapter == 1):
-            function.report_1.get_data(self)
+            report_1.get_data(self)
+        if(self.nowChapter == 2):
+            report_2.get_data(self)
+        if(self.nowChapter == 3):
+            report_3.get_data(self)
+        if(self.nowChapter == 4):
+            report_4.get_data(self)
+        if(self.nowChapter == 6):
+            report_6.get_data(self)
+
