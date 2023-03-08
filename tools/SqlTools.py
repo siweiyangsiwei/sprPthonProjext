@@ -28,6 +28,8 @@ def update_user(sec_list):
     sql_str = "UPDATE user SET time_1 =?,time_2 =?,time_3 =?,time_4 =?,time_5 =?,time_6 =?,time_7 =?,time_8 =?,time_9 =?,total_time =? WHERE id=\'admin\'"
     cur.execute(sql_str,sec_list)
     connect.commit()
+    cur.close()
+    connect.close()
 
 
 
