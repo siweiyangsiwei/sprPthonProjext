@@ -1,9 +1,9 @@
 import os.path
 from PyQt5 import QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QMessageBox
 from matplotlib import pyplot as plt
 import matplotlib as mpl
-
+from PyQt5.QtCore import QTimer
 from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
@@ -67,6 +67,12 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.resize(resize_width, resize_height)
         # 表格设置
         self.table_style()
+        # 计时
+        self.timer = QTimer()
+        # 初始化
+        self.lcdNumber.display("00:00:00")
+        self.start_timing()
+        self.timer.timeout.connect(self.update_time)
 
         self.pre_test_question.setEnabled(False)
         self.pre_purpose_page.setEnabled(False)
@@ -120,7 +126,7 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         self.amination_in.clicked.connect(self.amination_in_click)
 
-        self.shutdown.clicked.connect(lambda: self.close())
+        self.shutdown.clicked.connect(self.close_win)
         self.mini.clicked.connect(lambda: self.showMinimized())
         self.back.clicked.connect(self.back_main)
         self.send_email.clicked.connect(self.open_emailWindow)
@@ -550,7 +556,10 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
     # 返回主窗口
     def back_main(self):
+        self.stop_timing()
+        # self.stop_timing(self.mainWindow)
         self.mainWindow.show()
+        self.mainWindow.receive_time(self.sec)
         self.close()
 
     # 打开邮箱窗口
@@ -620,4 +629,46 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
             report_4.get_data(self)
         if(self.nowChapter == 6):
             report_6.get_data(self)
+
+    # 开始计时
+    def start_timing(self):
+        self.sec = 0
+        self.min = 0
+        self.hour = 0
+        self.lcdNumber.display("00:00:00")
+        self.timer.start(1000)
+
+    def stop_timing(self):
+        self.timer.stop()
+
+    def update_time(self):
+        # 用来传数据的秒数
+        self.sec += 1
+        # 用来显示时间的秒数，后面转换成时，分，秒形式
+        sec = self.sec
+        if sec >= 60:
+            self.min += 1
+            sec = sec - 60
+            if self.min >= 60:
+                self.hour += 1
+                self.min = self.min - 60
+        self.lcdNumber.display("{0}:{1}:{2}".format(str(int(self.hour)).rjust(2, '0'), str(int(self.min)).rjust(2, '0'),
+                                                    str(int(sec)).rjust(2, '0')))
+
+    # def closeEvent(self, event):
+    #     reply = QMessageBox.question(self, '警告', "系统将退出，是否确认?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+    #
+    #     if reply == QMessageBox.Yes:
+    #         app = QApplication.instance()
+    #         # 退出应用程序
+    #         app.quit()
+    #         event.accept()
+    #     else:
+    #         event.ignore()
+    def close_win(self):
+        reply = QMessageBox.question(self, '警告', "系统将退出，该实验的学习时间不会保存，是否确认?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            app = QApplication.instance()
+            # 退出应用程序
+            app.quit()
 
