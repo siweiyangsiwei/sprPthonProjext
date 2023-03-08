@@ -22,6 +22,12 @@ pywin32
 pip install pywin32
 ```
 
+python-docx
+```commandline
+pip install python-docx
+```
+
+
 ## 入口函数
 本项目的入口函数为`main.py`
 

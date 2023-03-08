@@ -3,6 +3,7 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QTableWidgetItem
 from matplotlib import pyplot as plt
 import numpy as np
+from docx import Document
 
 
 def data_processing_9_data_calculate_click(self):
@@ -51,16 +52,13 @@ def data_processing_9_data_calculate_click(self):
     # 计算数据
     data[1].append(data[1][-1])
     data[0].append(data[0][-1])
-    for i in range(6):
-        if i == 0 or i == 1 or i == 4:
-            continue
-        for j in range(len(data[4])):
-            av_x_rate = (data[1][j] + data[1][j + 1]) / 2
-            data[2].append(av_x_rate)
-            steam = data[0][j] - data[0][j + 1]
-            data[3].append(steam)
-            u = data[3][j] / 1000 / 0.0361 / data[4][j]
-            data[5].append(u)
+    for j in range(len(data[4])):
+        av_x_rate = (data[1][j] + data[1][j + 1]) / 2
+        data[2].append(av_x_rate)
+        steam = data[0][j] - data[0][j + 1]
+        data[3].append(steam)
+        u = data[3][j] / 1000 / 0.0361 / data[4][j]
+        data[5].append(u)
 
     # 将数据填入表格中
     j = 0
@@ -79,7 +77,7 @@ def data_processing_9_data_calculate_click(self):
 
     # 做出恒定干燥条件下的干燥曲线
     plt.figure(1)
-    plt.plot(data[4], data[1][0:-2], color='r')
+    plt.plot(data[4], data[1][0:-2], color='r', marker='o')
     plt.xlabel('干燥时间t/h')
     plt.ylabel('X/kg水/kg绝干物料')
     plt.title('X-t curve')
@@ -95,7 +93,7 @@ def data_processing_9_data_calculate_click(self):
     for i in xt:
         U.append(-1 * weight * i / area)
     plt.figure(2)
-    plt.plot(data[1][:-3], U, color='r')
+    plt.plot(data[1][:-3], U, color='r', marker='o')
     plt.xlabel('干基含水率')
     plt.ylabel('干燥速率U/kg/(${m^3}$·h)')
     plt.title('U-X curve')
@@ -104,3 +102,28 @@ def data_processing_9_data_calculate_click(self):
     image = QtGui.QPixmap(img).scaled(11182, 1182)
     self.data_processing_9_data_pic_2.setScaledContents(True)
     self.data_processing_9_data_pic_2.setPixmap(image)
+
+    print(data)
+
+    # 完成实验报告
+    document = Document('./resources/report/实验九 洞道干燥实验.docx')
+
+    document.add_paragraph("                表1 数据记录表")
+    table1 = document.add_table(len(data[0]), len(data), style='Table Grid')
+    heading_cells = table1.rows[0].cells
+    heading_cells[0].text = "湿物料质量Gi(g)"
+    heading_cells[1].text = "湿物料含水量Xi(kg水/kg绝干料)"
+    heading_cells[2].text = "湿物料平均含水量(kg水/kg绝干料)"
+    heading_cells[3].text = "汽化水分量△W(g)"
+    heading_cells[4].text = "时间间隔△t(m,s)"
+    heading_cells[5].text = "干燥速率U(kg/m²,s"
+
+    for i in range(len(data)):
+        for j in range(len(data[0]) - 1):
+            if i > 1 and j > len(data[0]) - 3:
+                continue
+            table1.rows[j + 1].cells[i].text = str(data[i][j])
+
+    document.add_picture('./data/img/exp_9_data_1.png')
+    document.add_picture('./data/img/exp_9_data_2.png')
+    document.save('./resources/report/实验九 洞道干燥实验.docx')
