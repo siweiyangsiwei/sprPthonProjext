@@ -1,12 +1,15 @@
 import os.path
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from matplotlib import pyplot as plt
 import numpy as np
 from docx import Document
 
+from function.report_9 import write_9_docx
+
 
 def data_processing_9_data_calculate_click(self):
+    QMessageBox.information(self, '提示', '正在计算中,请稍等~~~', QMessageBox.Ok)
     date = self.data_processing_9_date.text()
     bgtemp = self.data_processing_9_data_bgtemp.text()
     fgtemp = self.data_processing_9_data_fgtemp.text()
@@ -32,7 +35,8 @@ def data_processing_9_data_calculate_click(self):
             or pressure == ''
             or size == ''
             or weight == ''):
-        print("请填写好信息再进行计算")
+        QMessageBox.information(self, '提示', '请填写所有完整信息~~~', QMessageBox.Ok)
+
         return
     # 遍历保存表格中的数据到一个二维数组中
     # 并且填写需要计算出来的表格
@@ -103,27 +107,5 @@ def data_processing_9_data_calculate_click(self):
     self.data_processing_9_data_pic_2.setScaledContents(True)
     self.data_processing_9_data_pic_2.setPixmap(image)
 
-    print(data)
-
-    # 完成实验报告
-    document = Document('./resources/report/实验九 洞道干燥实验.docx')
-
-    document.add_paragraph("                表1 数据记录表")
-    table1 = document.add_table(len(data[0]), len(data), style='Table Grid')
-    heading_cells = table1.rows[0].cells
-    heading_cells[0].text = "湿物料质量Gi(g)"
-    heading_cells[1].text = "湿物料含水量Xi(kg水/kg绝干料)"
-    heading_cells[2].text = "湿物料平均含水量(kg水/kg绝干料)"
-    heading_cells[3].text = "汽化水分量△W(g)"
-    heading_cells[4].text = "时间间隔△t(m,s)"
-    heading_cells[5].text = "干燥速率U(kg/m²,s"
-
-    for i in range(len(data)):
-        for j in range(len(data[0]) - 1):
-            if i > 1 and j > len(data[0]) - 3:
-                continue
-            table1.rows[j + 1].cells[i].text = str(data[i][j])
-
-    document.add_picture('./data/img/exp_9_data_1.png')
-    document.add_picture('./data/img/exp_9_data_2.png')
-    document.save('./resources/report/实验九 洞道干燥实验.docx')
+    param = {data, date, bgtemp, fgtemp, flow, fstemp, pressure, size, weight, area}
+    write_9_docx(self, param)

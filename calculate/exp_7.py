@@ -1,7 +1,11 @@
-from PyQt5.QtWidgets import QTableWidgetItem
-from docx import Document
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
+
+from function.report_7 import write_7_docx
+
 
 def data_processing_7_data_calculate_click(self):
+    QMessageBox.information(self, '提示', '正在计算中,请稍等~~~', QMessageBox.Ok)
+
     date = self.data_processing_7_date.text()
     num_of_shai_ban_str = self.data_processing_7_data_num.text()
     num_of_pic_str = self.data_processing_7_data_num_of_pic.text()
@@ -25,10 +29,11 @@ def data_processing_7_data_calculate_click(self):
     q1 = 0.0
     q2 = 0.0
     q3 = 0.0
+    HETP = 0.0
     # 没有选择,默认筛板塔
     if not tower_type:
         if num_of_shai_ban_str == '' or num_of_pic_str == '':
-            print("请填写完信息")
+            QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
             return
         else:
             # 开始进行筛板塔计算
@@ -37,7 +42,7 @@ def data_processing_7_data_calculate_click(self):
             num_of_pic = float(self.data_processing_7_data_num_of_pic.text())
             for i in range(table.rowCount()):
                 if table.item(i, 0) is None or table.item(i, 1) is None or table.item(i, 2) is None:
-                    print('请先正确填写信息,第' + str(i + 1) + '没有填写')
+                    QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
                     return
                 else:
                     t1 = table.item(i, 0).data(0)
@@ -63,7 +68,7 @@ def data_processing_7_data_calculate_click(self):
     # 选择了,为填料塔
     else:
         if height_of_tian_liao_str == '' or num_of_pic_str == '':
-            print("请填写完信息")
+            QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
             return
         else:
             # 开始进行填料塔计算
@@ -72,7 +77,7 @@ def data_processing_7_data_calculate_click(self):
             num_of_pic = float(self.data_processing_7_data_num_of_pic.text())
             for i in range(table.rowCount()):
                 if table.item(i, 0) is None or table.item(i, 1) is None or table.item(i, 2) is None:
-                    print('请先正确填写信息,第' + str(i + 1) + '没有填写')
+                    QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
                     return
                 else:
                     t1 = table.item(i, 0).data(0)
@@ -116,41 +121,7 @@ def data_processing_7_data_calculate_click(self):
     item.setText(str(q3))
     table3.setItem(2, 2, item)
 
-    # 实验报告
-    document = Document('./resources/report/实验七 精馏实验.docx')
-    document.add_paragraph("                表1 数据记录表")
-    table1 = document.add_table(len(data1) + 1, 4, style='Table Grid')
-    table1.rows[0].cells[1].text = '1'
-    table1.rows[0].cells[2].text = '2'
-    table1.rows[0].cells[3].text = '3'
-    if not tower_type:
-        for i in range(len(data1)):
-            table1.rows[i + 1].cells[0].text = self.data_processing_7_table_1.verticalHeaderItem(i).data(0)
-
-    else:
-        for i in range(len(data1)):
-            table1.rows[i + 1].cells[0].text = self.data_processing_7_table_2.verticalHeaderItem(i).data(0)
-
-    for j in range(len(data1)):
-        table1.rows[j + 1].cells[1].text = str(data1[j])
-        table1.rows[j + 1].cells[2].text = str(data2[j])
-        table1.rows[j + 1].cells[3].text = str(data3[j])
-    document.add_paragraph("\n")
-
-    document.add_paragraph("                表2 计算结果")
-    table2 = document.add_table(4, 4, style='Table Grid')
-    table2.rows[0].cells[1].text = '1'
-    table2.rows[0].cells[2].text = '2'
-    table2.rows[0].cells[3].text = '3'
-    for i in range(3):
-        table2.rows[i + 1].cells[0].text = self.data_processing_7_table_3.verticalHeaderItem(i).data(0)
-        table2.rows[1].cells[1].text = str(HETP)
-        table2.rows[1].cells[2].text = str(HETP)
-        table2.rows[1].cells[3].text = str(HETP)
-        table2.rows[2].cells[1].text = str(R1)
-        table2.rows[2].cells[2].text = str(R2)
-        table2.rows[2].cells[3].text = str(R3)
-        table2.rows[3].cells[1].text = str(q1)
-        table2.rows[3].cells[2].text = str(q2)
-        table2.rows[3].cells[3].text = str(q3)
-    document.save('实验七 精馏实验.docx')
+    # 生产相应的实验报告
+    param = {self, data1, data2, data3, HETP, R1, R2, R3, q1, q2, q3, date, num_of_pic, num_of_shai_ban,
+             height_of_tian_liao}
+    write_7_docx(param)
