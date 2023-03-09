@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="images">
+    <file>exp_safe.png</file>
     <file>scut2.png</file>
     <file>scut.png</file>
   </qresource>
