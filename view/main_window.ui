@@ -493,7 +493,7 @@ border-radius:0;</string>
                     <property name="spacing">
                      <number>18</number>
                     </property>
-                    <item alignment="Qt::AlignHCenter">
+                    <item>
                      <widget class="QPushButton" name="answer_1">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -527,6 +527,9 @@ border-radius:0;</string>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">text-align:left</string>
+                      </property>
                       <property name="text">
                        <string>PushButton</string>
                       </property>
@@ -538,7 +541,7 @@ border-radius:0;</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignHCenter">
+                    <item>
                      <widget class="QPushButton" name="answer_2">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -572,6 +575,9 @@ border-radius:0;</string>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">text-align:left</string>
+                      </property>
                       <property name="text">
                        <string>PushButton</string>
                       </property>
@@ -583,7 +589,7 @@ border-radius:0;</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignHCenter">
+                    <item>
                      <widget class="QPushButton" name="answer_3">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -617,6 +623,9 @@ border-radius:0;</string>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">text-align:left</string>
+                      </property>
                       <property name="text">
                        <string>PushButton</string>
                       </property>
@@ -628,7 +637,7 @@ border-radius:0;</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignHCenter">
+                    <item>
                      <widget class="QPushButton" name="answer_4">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -662,6 +671,9 @@ border-radius:0;</string>
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">text-align:left</string>
+                      </property>
                       <property name="text">
                        <string>PushButton</string>
                       </property>
@@ -673,25 +685,71 @@ border-radius:0;</string>
                       </property>
                      </widget>
                     </item>
-                    <item alignment="Qt::AlignRight">
-                     <widget class="QPushButton" name="next_btn">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
+                    <item>
+                     <widget class="QFrame" name="frame_5">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>30</height>
+                       </size>
                       </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>12</pointsize>
-                       </font>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
                       </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
                       </property>
-                      <property name="text">
-                       <string>下一题</string>
-                      </property>
+                      <layout class="QGridLayout" name="gridLayout_4">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <item row="0" column="1">
+                        <widget class="QPushButton" name="next_btn">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>12</pointsize>
+                          </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="text">
+                          <string>下一题</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <spacer name="horizontalSpacer_6">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
@@ -1209,7 +1267,7 @@ border: none;
      <x>0</x>
      <y>0</y>
      <width>1176</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
