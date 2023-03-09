@@ -629,6 +629,15 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
             report_4.get_data(self)
         if(self.nowChapter == 6):
             report_6.get_data(self)
+        if(self.nowChapter == 5):
+            exp_5.data_processing_5_date_calculate_click(self)
+        if(self.nowChapter == 7):
+            exp_7.data_processing_7_data_calculate_click(self)
+        if(self.nowChapter == 8):
+            exp_8.data_processing_8_data_calculate_click(self)
+        if(self.nowChapter == 9):
+            exp_9.data_processing_9_data_calculate_click(self)
+
 
     # 开始计时
     def start_timing(self):

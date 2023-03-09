@@ -17,29 +17,30 @@ def docx2pdf(fn):
     doc.Close()  # 关闭原来word文件
     word.Quit()
 
-def write_7_docx(param):
+def write_7_docx(self, data1, data2, data3, HETP, R1, R2, R3, q1, q2, q3, date, num_of_pic, num_of_shai_ban,
+             height_of_tian_liao,tower_type):
     # 实验报告
     document = Document('./resources/report/实验七 精馏实验.docx')
-    document.add_paragraph('实验日期' + param.data + "\t板式塔实际塔板数" + param.num_of_shai_ban +
-                           "\t填料塔填料层高度" + param.height_of_tiam_liao +
-                           "\t图解法计算所得理论板数" + param.num_of_pic)
+    document.add_paragraph('实验日期' + date + "\t板式塔实际塔板数" + num_of_shai_ban +
+                           "\t填料塔填料层高度" + height_of_tian_liao +
+                           "\t图解法计算所得理论板数" + num_of_pic)
     document.add_paragraph("                表1 数据记录表")
-    table1 = document.add_table(len(param.data1) + 1, 4, style='Table Grid')
+    table1 = document.add_table(len(data1) + 1, 4, style='Table Grid')
     table1.rows[0].cells[1].text = '1'
     table1.rows[0].cells[2].text = '2'
     table1.rows[0].cells[3].text = '3'
-    if not param.tower_type:
-        for i in range(len(param.data1)):
-            table1.rows[i + 1].cells[0].text = param.self.data_processing_7_table_1.verticalHeaderItem(i).data(0)
+    if not tower_type:
+        for i in range(len(data1)):
+            table1.rows[i + 1].cells[0].text = self.data_processing_7_table_1.verticalHeaderItem(i).data(0)
 
     else:
-        for i in range(len(param.data1)):
-            table1.rows[i + 1].cells[0].text = param.self.data_processing_7_table_2.verticalHeaderItem(i).data(0)
+        for i in range(len(data1)):
+            table1.rows[i + 1].cells[0].text = self.data_processing_7_table_2.verticalHeaderItem(i).data(0)
 
-    for j in range(len(param.data1)):
-        table1.rows[j + 1].cells[1].text = str(param.data1[j])
-        table1.rows[j + 1].cells[2].text = str(param.data2[j])
-        table1.rows[j + 1].cells[3].text = str(param.data3[j])
+    for j in range(len(data1)):
+        table1.rows[j + 1].cells[1].text = str(data1[j])
+        table1.rows[j + 1].cells[2].text = str(data2[j])
+        table1.rows[j + 1].cells[3].text = str(data3[j])
     document.add_paragraph("\n")
 
     document.add_paragraph("                表2 计算结果")
@@ -48,37 +49,40 @@ def write_7_docx(param):
     table2.rows[0].cells[2].text = '2'
     table2.rows[0].cells[3].text = '3'
     for i in range(3):
-        table2.rows[i + 1].cells[0].text = param.self.data_processing_7_table_3.verticalHeaderItem(i).data(0)
-        table2.rows[1].cells[1].text = str(param.HETP)
-        table2.rows[1].cells[2].text = str(param.HETP)
-        table2.rows[1].cells[3].text = str(param.HETP)
-        table2.rows[2].cells[1].text = str(param.R1)
-        table2.rows[2].cells[2].text = str(param.R2)
-        table2.rows[2].cells[3].text = str(param.R3)
-        table2.rows[3].cells[1].text = str(param.q1)
-        table2.rows[3].cells[2].text = str(param.q2)
-        table2.rows[3].cells[3].text = str(param.q3)
+        table2.rows[i + 1].cells[0].text = self.data_processing_7_table_3.verticalHeaderItem(i).data(0)
+        table2.rows[1].cells[1].text = str(HETP)
+        table2.rows[1].cells[2].text = str(HETP)
+        table2.rows[1].cells[3].text = str(HETP)
+        table2.rows[2].cells[1].text = str(R1)
+        table2.rows[2].cells[2].text = str(R2)
+        table2.rows[2].cells[3].text = str(R3)
+        table2.rows[3].cells[1].text = str(q1)
+        table2.rows[3].cells[2].text = str(q2)
+        table2.rows[3].cells[3].text = str(q3)
 
     # 保存文件
-    pre_path = import_data(param.self)
+    pre_path = import_data(self)
     file_path = pre_path + '/' + '实验七 精馏实验.docx'
     document.save(file_path)
 
     # 创建一个问答框
-    param.self.box = QMessageBox(QMessageBox.Question, '提示', 'docx文件已保存，是否转换成pdf文件？')
+    self.box = QMessageBox(QMessageBox.Question, '提示', 'docx文件已保存，是否转换成pdf文件？')
 
     # 添加按钮
-    yes = param.self.box.addButton('确定', QMessageBox.YesRole)
-    no = param.self.box.addButton('取消', QMessageBox.NoRole)
+    yes = self.box.addButton('确定', QMessageBox.YesRole)
+    no = self.box.addButton('取消', QMessageBox.NoRole)
 
     # 显示该问答框
-    param.self.box.exec_()
+    self.box.exec_()
 
-    if param.self.box.clickedButton() == yes:
-        print(1)
-        # docx转pdf
-        docx2pdf(file_path)
-        QMessageBox.information(param.self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
+    if self.box.clickedButton() == yes:
+        try:
+            print(1)
+            # docx转pdf
+            docx2pdf(file_path)
+            QMessageBox.information(self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
+        except:
+            QMessageBox.information(self, '提示', '生成pdf文件出错！', QMessageBox.Ok)
     else:
         print(2)
         pass

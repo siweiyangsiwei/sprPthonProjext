@@ -166,5 +166,14 @@ def data_processing_8_data_calculate_click(self):
             item.setText(str(data4[j][i]))
             table.setItem(i, j, item)
 
-    param = {data, data3, data4, date, height, diameter, pressure, temp, T, P}
-    write_8_docx(self, param)
+    # 创建一个问答框
+    self.box = QMessageBox(QMessageBox.Question, '提示', '计算完成,是否要生成实验报告?')
+
+    # 添加按钮
+    yes = self.box.addButton('确定', QMessageBox.YesRole)
+    no = self.box.addButton('取消', QMessageBox.NoRole)
+
+    # 显示该问答框
+    self.box.exec_()
+    if self.box.clickedButton() == yes:
+        write_8_docx(self, data, data3, data4, date, height, diameter, pressure, temp, T, P)

@@ -18,19 +18,19 @@ def docx2pdf(fn):
     word.Quit()
 
 
-def write_9_docx(self,param):
+def write_9_docx(self,data, date, bgtemp, fgtemp, flow, fstemp, pressure, size, weight, area):
     # 完成实验报告
     document = Document('./resources/report/实验九 洞道干燥实验.docx')
 
-    document.add_paragraph('实验日期' + param.date + "\t干燥介质:热空气\t物料尺寸" + param.size +
-                           "\t物料的绝干质量" + param.weight +
-                           "\t干燥室截面积" + param.area + "\t室前干球温度" + param.fgtemp +
-                           "\t室前湿球温度" + param.fstemp + " \t室后干球温度" + param.bgtemp +
-                           "\t孔板流量计空气流量" + param.flow + "\t风机出口压力" + param.pressure
+    document.add_paragraph('实验日期' + date + "\t干燥介质:热空气\t物料尺寸" + size +
+                           "\t物料的绝干质量" + weight +
+                           "\t干燥室截面积" + area + "\t室前干球温度" + fgtemp +
+                           "\t室前湿球温度" + fstemp + " \t室后干球温度" + bgtemp +
+                           "\t孔板流量计空气流量" + flow + "\t风机出口压力" + pressure
                            )
 
     document.add_paragraph("                表1 数据记录表")
-    table1 = document.add_table(len(param.data[0]), len(param.data), style='Table Grid')
+    table1 = document.add_table(len(data[0]), len(data), style='Table Grid')
     heading_cells = table1.rows[0].cells
     heading_cells[0].text = "湿物料质量Gi(g)"
     heading_cells[1].text = "湿物料含水量Xi(kg水/kg绝干料)"
@@ -39,14 +39,14 @@ def write_9_docx(self,param):
     heading_cells[4].text = "时间间隔△t(m,s)"
     heading_cells[5].text = "干燥速率U(kg/m²,s"
 
-    for i in range(len(param.data)):
-        for j in range(len(param.data[0]) - 1):
-            if i > 1 and j > len(param.data[0]) - 3:
+    for i in range(len(data)):
+        for j in range(len(data[0]) - 1):
+            if i > 1 and j > len(data[0]) - 3:
                 continue
-            table1.rows[j + 1].cells[i].text = str(param.data[i][j])
+            table1.rows[j + 1].cells[i].text = str(data[i][j])
 
-    document.add_picture('./param.data/img/exp_9_param.data_1.png')
-    document.add_picture('./param.data/img/exp_9_param.data_2.png')
+    document.add_picture('./data/img/exp_9_data_1.png')
+    document.add_picture('./data/img/exp_9_data_2.png')
 
     # 保存文件
     pre_path = import_data(self)
@@ -64,9 +64,12 @@ def write_9_docx(self,param):
     self.box.exec_()
 
     if self.box.clickedButton() == yes:
-        print(1)
-        # docx转pdf
-        docx2pdf(file_path)
-        QMessageBox.information(self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
+        try:
+            print(1)
+            # docx转pdf
+            docx2pdf(file_path)
+            QMessageBox.information(self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
+        except:
+            QMessageBox.information(self, '提示', '生成pdf文件出错！', QMessageBox.Ok)
     else:
         print(2)

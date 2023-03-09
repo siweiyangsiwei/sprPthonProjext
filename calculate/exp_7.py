@@ -120,8 +120,16 @@ def data_processing_7_data_calculate_click(self):
     item = QTableWidgetItem()
     item.setText(str(q3))
     table3.setItem(2, 2, item)
+    # 创建一个问答框
+    self.box = QMessageBox(QMessageBox.Question, '提示', '计算完成,是否要生成实验报告?')
 
-    # 生产相应的实验报告
-    param = {self, data1, data2, data3, HETP, R1, R2, R3, q1, q2, q3, date, num_of_pic, num_of_shai_ban,
-             height_of_tian_liao}
-    write_7_docx(param)
+    # 添加按钮
+    yes = self.box.addButton('确定', QMessageBox.YesRole)
+    no = self.box.addButton('取消', QMessageBox.NoRole)
+
+    # 显示该问答框
+    self.box.exec_()
+    if self.box.clickedButton() == yes:
+        # 生产相应的实验报告
+        write_7_docx(self, data1, data2, data3, HETP, R1, R2, R3, q1, q2, q3, date, num_of_pic, num_of_shai_ban,
+             height_of_tian_liao,tower_type)

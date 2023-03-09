@@ -229,7 +229,16 @@ def data_processing_5_date_calculate_click(self):
         self.data_processing_5_img.setScaledContents(True)
         self.data_processing_5_img.setPixmap(image)
 
-        # 实验报告
-        param = {p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2, qe3, te1, te2, te3, qt1, qt2, qt3, s, r, V,
-                 u, date, area, temp}
-        write_5_docx(self, param)
+        # 创建一个问答框
+        self.box = QMessageBox(QMessageBox.Question, '提示', '计算完成,是否要生成实验报告?')
+
+        # 添加按钮
+        yes = self.box.addButton('确定', QMessageBox.YesRole)
+        no = self.box.addButton('取消', QMessageBox.NoRole)
+
+        # 显示该问答框
+        self.box.exec_()
+        if self.box.clickedButton() == yes:
+            # 实验报告
+            write_5_docx(self, p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2, qe3, te1, te2, te3, qt1, qt2,
+                         qt3, s, r, V, u, date, area, temp, q1, q2, q3)
