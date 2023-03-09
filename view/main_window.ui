@@ -1250,8 +1250,8 @@ border: none;
              <attribute name="title">
               <string>我的</string>
              </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <item>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="0" column="0">
                <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,3,3,0,25">
                 <item>
                  <widget class="QLabel" name="label">
@@ -1264,6 +1264,12 @@ border: none;
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>198</height>
                    </size>
                   </property>
@@ -1365,14 +1371,14 @@ border: none;
      <x>0</x>
      <y>0</y>
      <width>1176</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../srpresources/res.qrc"/>
+  <include location="srpresources.qrc"/>
  </resources>
  <connections/>
 </ui>
