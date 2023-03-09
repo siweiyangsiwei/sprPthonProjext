@@ -126,13 +126,16 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
         self.amination_in.clicked.connect(self.amination_in_click)
 
-        self.shutdown.clicked.connect(self.close_win)
+        self.shutdown.clicked.connect(self.close_all)
         self.mini.clicked.connect(lambda: self.showMinimized())
-        self.back.clicked.connect(self.back_main)
+        self.back.clicked.connect(self.close)
         self.send_email.clicked.connect(self.open_emailWindow)
 
         # 生成所在章节的实验报告
         self.exp_report.clicked.connect(self.select_report)
+
+        # 设置实验动画按钮不可用
+        self.amination_in.setEnabled(False)
 
         # 计算按键触发事件
         self.calculate_1.clicked.connect(lambda: exp_1.calculate_data1(self))
@@ -545,10 +548,16 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
 
     # 答题结束的函数
     def finish_test(self):
-        print("你的答案是: " + str(self.answerList))
-        print("正确答案是: " + str(
-            SqlTools.get_correct_answer_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])))
-        print("答题结束")
+        QMessageBox.information(self, '答题结束',
+                                "你的答案是:" + str(self.answerList) +'\n'
+                                +"正确答案是: " + str(SqlTools.get_correct_answer_by_chapter(self.chapterBtnNameList[self.nowChapter - 1]))+'\n'
+                                , QMessageBox.Ok)
+        # 开放实验动画
+        self.amination_in.setEnabled(True)
+        # print("你的答案是: " + str(self.answerList))
+        # print("正确答案是: " + str(
+        #     SqlTools.get_correct_answer_by_chapter(self.chapterBtnNameList[self.nowChapter - 1])))
+        # print("答题结束")
 
     # 接收主窗口，下面用于返回主窗口
     def receive_main(self, mainWindow):
@@ -655,19 +664,14 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         self.lcdNumber.display("{0}:{1}:{2}".format(str(int(self.hour)).rjust(2, '0'), str(int(self.min)).rjust(2, '0'),
                                                     str(int(sec)).rjust(2, '0')))
 
-    # def closeEvent(self, event):
-    #     reply = QMessageBox.question(self, '警告', "系统将退出，是否确认?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-    #
-    #     if reply == QMessageBox.Yes:
-    #         app = QApplication.instance()
-    #         # 退出应用程序
-    #         app.quit()
-    #         event.accept()
-    #     else:
-    #         event.ignore()
-    def close_win(self):
-        reply = QMessageBox.question(self, '警告', "系统将退出，该实验的学习时间不会保存，是否确认?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+    def closeEvent(self, event):
+        self.back_main()
+
+    def close_all(self):
+        reply = QMessageBox.question(self, '警告', "系统将退出，是否确认?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
+            self.mainWindow.receive_time(self.sec)
+            self.mainWindow.update_data()
             app = QApplication.instance()
             # 退出应用程序
             app.quit()

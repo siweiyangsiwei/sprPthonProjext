@@ -1,10 +1,12 @@
 <RCC>
   <qresource prefix="images">
+    <file>exp.png</file>
     <file>exp_safe.png</file>
     <file>scut2.png</file>
     <file>scut.png</file>
   </qresource>
   <qresource prefix="icons">
+    <file>start.png</file>
     <file>email.png</file>
     <file>user.png</file>
     <file>save.png</file>
