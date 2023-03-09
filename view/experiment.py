@@ -495,26 +495,9 @@ class Ui_ExperimentWindow(object):
         self.gridLayout_7 = QtWidgets.QGridLayout(self.frame_3)
         self.gridLayout_7.setObjectName("gridLayout_7")
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem1, 2, 1, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(417, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_7.addItem(spacerItem2, 3, 2, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(417, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_7.addItem(spacerItem3, 3, 0, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem4, 1, 1, 1, 1)
-        self.textEdit = QtWidgets.QTextEdit(self.frame_3)
-        self.textEdit.setStyleSheet(" text-align : center;\n"
-"                     font: bold;\n"
-"                     padding: 6px;\n"
-"                     height : 14px;\n"
-"                     border-style: outset;\n"
-"\n"
-"background-color: rgba(255, 255, 255,210);\n"
-"border-radius:10px;")
-        self.textEdit.setUndoRedoEnabled(True)
-        self.textEdit.setReadOnly(True)
-        self.textEdit.setObjectName("textEdit")
-        self.gridLayout_7.addWidget(self.textEdit, 0, 0, 1, 1)
+        self.gridLayout_7.addItem(spacerItem1, 1, 2, 1, 1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem2, 2, 2, 1, 1)
         self.frame_6 = QtWidgets.QFrame(self.frame_3)
         self.frame_6.setStyleSheet("background-color:transparent;")
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -556,7 +539,22 @@ class Ui_ExperimentWindow(object):
         self.amination_in.setText("")
         self.amination_in.setIconSize(QtCore.QSize(20, 20))
         self.amination_in.setObjectName("amination_in")
-        self.gridLayout_7.addWidget(self.frame_6, 3, 1, 1, 1)
+        self.gridLayout_7.addWidget(self.frame_6, 3, 2, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(417, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_7.addItem(spacerItem3, 3, 3, 1, 1)
+        spacerItem4 = QtWidgets.QSpacerItem(417, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_7.addItem(spacerItem4, 3, 1, 1, 1)
+        self.label_112 = QtWidgets.QLabel(self.frame_3)
+        self.label_112.setStyleSheet(" text-align : center;\n"
+"                     font: bold;\n"
+"                     padding: 6px;\n"
+"                     height : 14px;\n"
+"                     border-style: outset;\n"
+"\n"
+"background-color: rgba(255, 255, 255,210);\n"
+"border-radius:10px;")
+        self.label_112.setObjectName("label_112")
+        self.gridLayout_7.addWidget(self.label_112, 0, 0, 1, 1)
         self.gridLayout_7.setColumnStretch(0, 1)
         self.gridLayout_7.setColumnStretch(1, 1)
         self.gridLayout_7.setColumnStretch(2, 1)
@@ -1770,7 +1768,7 @@ class Ui_ExperimentWindow(object):
         self.data_processing_5_contain.setAlignment(QtCore.Qt.AlignCenter)
         self.data_processing_5_contain.setObjectName("data_processing_5_contain")
         self.data_processing_5_content = QtWidgets.QWidget()
-        self.data_processing_5_content.setGeometry(QtCore.QRect(65, 0, 1121, 3000))
+        self.data_processing_5_content.setGeometry(QtCore.QRect(81, 0, 1121, 3000))
         self.data_processing_5_content.setObjectName("data_processing_5_content")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.data_processing_5_content)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
@@ -3354,13 +3352,7 @@ class Ui_ExperimentWindow(object):
         self.pre_steps_page.setText(_translate("ExperimentWindow", "上一页"))
         self.next_steps_page.setText(_translate("ExperimentWindow", "下一页"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.experiment_steps), _translate("ExperimentWindow", "实验步骤"))
-        self.textEdit.setHtml(_translate("ExperimentWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:18pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">注：进入实验动画之前需完成实验测试</span></p></body></html>"))
+        self.label_112.setText(_translate("ExperimentWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">注：进入实验动画之前</span></p><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">需完成实验测试</span></p></body></html>"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.experment_amination), _translate("ExperimentWindow", "实验动画"))
         self.label_10.setText(_translate("ExperimentWindow", "表2 雷诺演示实验处理数据记录表"))
         self.label_12.setText(_translate("ExperimentWindow", "密度"))
