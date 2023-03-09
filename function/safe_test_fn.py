@@ -42,6 +42,12 @@ def answer_1_clicked(self):
         self.answer_1.setStyleSheet("background-color: rgb(223, 76, 76,160);")
         self.answer_button.setStyleSheet("background-color: rgb(65, 205, 82,150);")
 
+    # 选择完答案之后禁用按钮
+    self.answer_1.setEnabled(False)
+    self.answer_2.setEnabled(False)
+    self.answer_3.setEnabled(False)
+    self.answer_4.setEnabled(False)
+
 def answer_2_clicked(self):
     if self.answer == 2:
         self.answer_2.setStyleSheet("background-color: rgb(65, 205, 82,150);")
@@ -49,7 +55,11 @@ def answer_2_clicked(self):
     else:
         self.answer_2.setStyleSheet("background-color: rgb(223, 76, 76,160);")
         self.answer_button.setStyleSheet("background-color: rgb(65, 205, 82,150);")
-
+    # 选择完答案之后禁用按钮
+    self.answer_1.setEnabled(False)
+    self.answer_2.setEnabled(False)
+    self.answer_3.setEnabled(False)
+    self.answer_4.setEnabled(False)
 
 def answer_3_clicked(self):
     if self.answer == 3:
@@ -58,16 +68,22 @@ def answer_3_clicked(self):
     else:
         self.answer_3.setStyleSheet("background-color: rgb(223, 76, 76,160);")
         self.answer_button.setStyleSheet("background-color: rgb(65, 205, 82,150);")
-
-
+    # 选择完答案之后禁用按钮
+    self.answer_1.setEnabled(False)
+    self.answer_2.setEnabled(False)
+    self.answer_3.setEnabled(False)
+    self.answer_4.setEnabled(False)
 def answer_4_clicked(self):
     if self.answer == 4:
         self.answer_4.setStyleSheet("background-color: rgb(65, 205, 82,150);")
         self.correct_num += 1
     else:
         self.answer_4.setStyleSheet("background-color: rgb(223, 76, 76,160);")
-        self.answer_button.setStyleSheet("background-color: rgb(65, 205, 82,150);")
-
+        self.answer_button.setStyleSheet("background-color: rgb(65, 205, 82,150);")#   选择完答案之后禁用按钮
+    self.answer_1.setEnabled(False)
+    self.answer_2.setEnabled(False)
+    self.answer_3.setEnabled(False)
+    self.answer_4.setEnabled(False)
 # 更新题目
 def test_update(self):
     self.now_num += 1
@@ -82,7 +98,13 @@ def test_update(self):
         self.answer_2.setStyleSheet("background-color: rgb(225, 225, 225);")
         self.answer_3.setStyleSheet("background-color: rgb(225, 225, 225);")
         self.answer_4.setStyleSheet("background-color: rgb(225, 225, 225);")
+        # 恢复按钮可使用
+        self.answer_1.setEnabled(True)
+        self.answer_2.setEnabled(True)
+        self.answer_3.setEnabled(True)
+        self.answer_4.setEnabled(True)
         show_test(self)
+
 
 # 答题结束
 def test_end(self):

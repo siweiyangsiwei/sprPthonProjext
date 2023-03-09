@@ -1,6 +1,6 @@
 # srp项目
 ## 依赖信息
-目前最近版需要的依赖为 PyQt5 以及 PyQt-tool
+项目依赖
 可以使用如下命令安装
 
 PyQt5:
@@ -22,11 +22,20 @@ pywin32
 pip install pywin32
 ```
 
-python-docx
+matplotlib
 ```commandline
-pip install python-docx
+pip install matplotlib
 ```
 
+numpy
+```commandline
+pip install numpy
+```
+
+pandas
+```commandline
+pip install pandas
+```
 
 ## 入口函数
 本项目的入口函数为`main.py`

@@ -8,7 +8,7 @@ from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-from function import report_1, report_2, report_3, report_4,report_6
+from function import report_1, report_2, report_3, report_4, report_6
 from calculate import exp_1, exp_2, exp_3, exp_4, exp_5, exp_6, exp_7, exp_8, exp_9
 
 
@@ -39,7 +39,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     # 记录是否结束了测试
     answerList = []
 
-    chapterNameList = ["第一章", "第二章", "第三章", "第四章", "第五章", "第六章", "第七章", "第八章", "第九章"]
+    chapterNameList = ["第一章 雷诺实验", "第二章 机械能转换实验", "第三章 流体阻力的测定实验",
+                       "第四章 离心泵性能曲线测定", "第五章 恒压过滤实验", "第六章 综合传热实验",
+                       "第七章 精馏实验", "第八章 吸收-解析实验", "第九章 洞道干燥实验"]
     chapterBtnNameList = ["chapter_one", "chapter_two", "chapter_three", "chapter_four", "chapter_five", "chapter_six",
                           "chapter_seven", "chapter_eight", "chapter_nine"]
 
@@ -472,7 +474,6 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def data_processing_9_data_calculate_click(self):
         exp_9.data_processing_9_data_calculate_click(self)
 
-
     # 点击test部分下一题触发的事件
     def next_test_question_click(self):
         # 判断是否已经填入答案
@@ -621,23 +622,22 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     def select_report(self):
         if (self.nowChapter == 1):
             report_1.get_data(self)
-        if(self.nowChapter == 2):
+        if (self.nowChapter == 2):
             report_2.get_data(self)
-        if(self.nowChapter == 3):
+        if (self.nowChapter == 3):
             report_3.get_data(self)
-        if(self.nowChapter == 4):
+        if (self.nowChapter == 4):
             report_4.get_data(self)
-        if(self.nowChapter == 6):
+        if (self.nowChapter == 6):
             report_6.get_data(self)
-        if(self.nowChapter == 5):
+        if (self.nowChapter == 5):
             exp_5.data_processing_5_date_calculate_click(self)
-        if(self.nowChapter == 7):
+        if (self.nowChapter == 7):
             exp_7.data_processing_7_data_calculate_click(self)
-        if(self.nowChapter == 8):
+        if (self.nowChapter == 8):
             exp_8.data_processing_8_data_calculate_click(self)
-        if(self.nowChapter == 9):
+        if (self.nowChapter == 9):
             exp_9.data_processing_9_data_calculate_click(self)
-
 
     # 开始计时
     def start_timing(self):
@@ -675,9 +675,9 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
     #     else:
     #         event.ignore()
     def close_win(self):
-        reply = QMessageBox.question(self, '警告', "系统将退出，该实验的学习时间不会保存，是否确认?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        reply = QMessageBox.question(self, '警告', "系统将退出，该实验的学习时间不会保存，是否确认?",
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             app = QApplication.instance()
             # 退出应用程序
             app.quit()
-
