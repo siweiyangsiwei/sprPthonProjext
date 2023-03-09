@@ -3,13 +3,16 @@ from view.main_window import Ui_MainWindow
 from controllers.ExperimentWindow import ExperimentWindow
 from function import safe_test_fn
 from tools import SqlTools
+from PyQt5.QtCore import Qt
 
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.run()
-        safe_test_fn.show_test(self)
+        # 文字居中
+        self.label_safe.setAlignment(Qt.AlignCenter)
+        self.label_end.setAlignment(Qt.AlignCenter)
         self.user_list = SqlTools.get_user("admin")[0]
         print(self.user_list)
         self.label_id.setText(self.user_list[0])
@@ -19,6 +22,19 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         # 总时间
         self.sec_list.append(self.user_list[2])
         self.update_time()
+        # 开始答题按钮
+        self.start_btn.clicked.connect(self.start_safe_test)
+        # 下一题按钮
+        self.next_btn.clicked.connect(lambda: safe_test_fn.test_update(self))
+        # 返回按钮
+        self.back_btn.clicked.connect(self.show_initial)
+        # 设置初始页面
+        self.stackedWidget.setCurrentIndex(0)
+        
+        self.answer_1.clicked.connect(lambda: safe_test_fn.answer_1_clicked(self))
+        self.answer_2.clicked.connect(lambda: safe_test_fn.answer_2_clicked(self))
+        self.answer_3.clicked.connect(lambda: safe_test_fn.answer_3_clicked(self))
+        self.answer_4.clicked.connect(lambda: safe_test_fn.answer_4_clicked(self))
 
     def run(self):
         # 双击打开实验窗口
@@ -39,33 +55,6 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         # 调用一下chapter_click(self, num)方法进行章节的初始化,其中num为当前章节的索引,从1开始
         self.exp_window.chapter_click(self.item_index + 1)
         self.exp_window.receive_main(self)
-        # self.close()
-
-    # def update_time(self, hour, min, sec):
-    #     if self.treeWidget.currentItem().text(1) != None:
-    #         list = self.treeWidget.currentItem().text(1).split(':')
-    #         hour = int(list[0]) + hour
-    #         min = int(list[1]) + min
-    #         sec = int(list[2]) + sec
-    #         if sec >= 60:
-    #             min += 1
-    #             sec = sec - 60
-    #             if min >= 60:
-    #                 hour += 1
-    #                 min = min - 60
-    #         self.treeWidget.currentItem().setText(1, "{0}:{1}:{2}".format(str(int(hour)).rjust(2, '0')
-    #                                                                       , str(int(min)).rjust(2, '0')
-    #                                                                       , str(int(sec)).rjust(2, '0')))
-    #     else:
-    #         self.treeWidget.currentItem().setText(1, "{0}:{1}:{2}".format(str(int(hour)).rjust(2, '0')
-    #                                                                       , str(int(min)).rjust(2, '0')
-    #                                                                       , str(int(sec)).rjust(2, '0')))
-    #     # 将时间相加
-    #     hours = 0
-    #     mins = 0
-    #     secs = 0
-    #     for i in range(3):
-    #         time = self.treeWidget.topLevelItem(i).text(1)
 
     def update_time(self):
         total_sec = 0
@@ -122,3 +111,17 @@ class MainWindow(QMainWindow,Ui_MainWindow):
     # 关闭程序时更新数据库
     def closeEvent(self, event):
         self.update_data()
+
+    # 实验安全
+    def start_safe_test(self):
+        self.stackedWidget.setCurrentIndex(1)
+        # 答对题数
+        self.correct_num = 0
+        # 记录答题数
+        self.now_num = 1
+        safe_test_fn.show_test(self)
+
+    # 显示实验安全初始页面
+    def show_initial(self):
+        self.stackedWidget.setCurrentIndex(0)
+        self.next_btn.setText("下一题")
