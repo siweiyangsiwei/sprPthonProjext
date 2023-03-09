@@ -2,6 +2,7 @@
   <qresource prefix="images">
     <file>exp.png</file>
     <file>exp_safe.png</file>
+    <file>home.png</file>
     <file>scut2.png</file>
     <file>scut.png</file>
   </qresource>
