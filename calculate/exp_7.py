@@ -1,5 +1,11 @@
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
+
+from function.report_7 import write_7_docx
+
+
 def data_processing_7_data_calculate_click(self):
+    QMessageBox.information(self, '提示', '正在计算中,请稍等~~~', QMessageBox.Ok)
+
     date = self.data_processing_7_date.text()
     num_of_shai_ban_str = self.data_processing_7_data_num.text()
     num_of_pic_str = self.data_processing_7_data_num_of_pic.text()
@@ -23,10 +29,11 @@ def data_processing_7_data_calculate_click(self):
     q1 = 0.0
     q2 = 0.0
     q3 = 0.0
+    HETP = 0.0
     # 没有选择,默认筛板塔
     if not tower_type:
         if num_of_shai_ban_str == '' or num_of_pic_str == '':
-            print("请填写完信息")
+            QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
             return
         else:
             # 开始进行筛板塔计算
@@ -35,7 +42,7 @@ def data_processing_7_data_calculate_click(self):
             num_of_pic = float(self.data_processing_7_data_num_of_pic.text())
             for i in range(table.rowCount()):
                 if table.item(i, 0) is None or table.item(i, 1) is None or table.item(i, 2) is None:
-                    print('请先正确填写信息,第' + str(i + 1) + '没有填写')
+                    QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
                     return
                 else:
                     t1 = table.item(i, 0).data(0)
@@ -61,7 +68,7 @@ def data_processing_7_data_calculate_click(self):
     # 选择了,为填料塔
     else:
         if height_of_tian_liao_str == '' or num_of_pic_str == '':
-            print("请填写完信息")
+            QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
             return
         else:
             # 开始进行填料塔计算
@@ -70,7 +77,7 @@ def data_processing_7_data_calculate_click(self):
             num_of_pic = float(self.data_processing_7_data_num_of_pic.text())
             for i in range(table.rowCount()):
                 if table.item(i, 0) is None or table.item(i, 1) is None or table.item(i, 2) is None:
-                    print('请先正确填写信息,第' + str(i + 1) + '没有填写')
+                    QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
                     return
                 else:
                     t1 = table.item(i, 0).data(0)
@@ -113,3 +120,8 @@ def data_processing_7_data_calculate_click(self):
     item = QTableWidgetItem()
     item.setText(str(q3))
     table3.setItem(2, 2, item)
+
+    # 生产相应的实验报告
+    param = {self, data1, data2, data3, HETP, R1, R2, R3, q1, q2, q3, date, num_of_pic, num_of_shai_ban,
+             height_of_tian_liao}
+    write_7_docx(param)

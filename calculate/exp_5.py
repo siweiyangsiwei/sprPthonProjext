@@ -1,13 +1,16 @@
 import math
 import os
 
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from PyQt5 import QtGui
 import matplotlib.pyplot as plt
+
+from function.report_5 import write_5_docx
 
 
 # 第五章的数据处理部分
 def data_processing_5_date_calculate_click(self):
+    QMessageBox.information(self, '提示', '正在计算中,请稍等~~~', QMessageBox.Ok)
     # 滤渣压缩系数
     s = self.data_processing_5_date_s.text()
     # 滤渣比阻
@@ -29,7 +32,9 @@ def data_processing_5_date_calculate_click(self):
             or self.data_processing_5_date.text() == ''
             or self.data_processing_5_date_area.text() == ''
             or self.data_processing_5_date_temp.text() == ''):
-        print('请先填写好所有的东西')
+        QMessageBox.information(self, '提示', '请填写所有完整信息！', QMessageBox.Ok)
+        return
+
     else:
         # 分别对应表中填写的三个压强差
         p1 = int(self.data_processing_5_table_1.item(0, 0).data(0))
@@ -217,9 +222,14 @@ def data_processing_5_date_calculate_click(self):
 
         plt.xlabel('q')
         plt.ylabel('q/t')
-        plt.savefig('./data/img/exp_5_data.png')
+        plt.savefig('./data/img/exp_5_data_1.png')
 
-        img = os.path.abspath("./data/img/exp_5_data.png")
+        img = os.path.abspath("./data/img/exp_5_data_1.png")
         image = QtGui.QPixmap(img).scaled(11182, 1182)
         self.data_processing_5_img.setScaledContents(True)
         self.data_processing_5_img.setPixmap(image)
+
+        # 实验报告
+        param = {p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2, qe3, te1, te2, te3, qt1, qt2, qt3, s, r, V,
+                 u, date, area, temp}
+        write_5_docx(self, param)

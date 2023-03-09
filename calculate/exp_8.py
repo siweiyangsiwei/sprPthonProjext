@@ -1,12 +1,16 @@
 import math
 import os
 
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from PyQt5 import QtGui
 import matplotlib.pyplot as plt
+from docx import Document
+
+from function.report_8 import write_8_docx
 
 
 def data_processing_8_data_calculate_click(self):
+    QMessageBox.information(self, '提示', '正在计算中,请稍等~~~', QMessageBox.Ok)
     if (self.data_processing_8_date.text() == ''
             or self.data_processing_8_data_height.text() == ''
             or self.data_processing_8_data_diameter.text() == ''
@@ -15,7 +19,8 @@ def data_processing_8_data_calculate_click(self):
             or self.data_processing_8_data_temp.text() == ''
             or self.data_processing_8_data_T.text() == ''
             or self.data_processing_8_data_P.text() == ''):
-        print("请填写完整的信息")
+        QMessageBox.information(self, '提示', '请填写所有完整信息~~~', QMessageBox.Ok)
+
         return
     # 实验日期
     date = self.data_processing_8_date.text()
@@ -52,7 +57,8 @@ def data_processing_8_data_calculate_click(self):
                         table.setItem(i, j, item)
                         data[i].append(float(table.item(i, j).data(0)))
                     else:
-                        print("请先填写好表中的数据")
+                        QMessageBox.information(self, '提示', '请填写所有完整信息~~~', QMessageBox.Ok)
+
                         return
                 else:
                     data[i].append(float(table.item(i, j).data(0)))
@@ -68,7 +74,8 @@ def data_processing_8_data_calculate_click(self):
                         table.setItem(i, j, item)
                         data[i].append(float(table.item(i, j).data(0)))
                     else:
-                        print("请先填写好表中的数据")
+                        QMessageBox.information(self, '提示', '请填写所有完整信息~~~', QMessageBox.Ok)
+
                         return
                 else:
                     data[i].append(float(table.item(i, j).data(0)))
@@ -86,7 +93,7 @@ def data_processing_8_data_calculate_click(self):
         deter_pressure.append(data[i][1])
 
     # 绘制不同喷淋量下填料层的压强降与气速的关系
-    plt.plot(u, deter_pressure, color='r')
+    plt.plot(u, deter_pressure, color='r', marker='o')
     plt.xlabel('u')
     plt.ylabel('△p')
     plt.title('△P/Z-u curve')
@@ -103,7 +110,8 @@ def data_processing_8_data_calculate_click(self):
     for i in range(table.rowCount()):
         for j in range(2):
             if table.item(i, j) is None:
-                print("请填写好数据再进行计算")
+                QMessageBox.information(self, '提示', '请填写所有完整信息~~~', QMessageBox.Ok)
+
                 return
             else:
                 data3[j].append(float(table.item(i, j).data(0)))
@@ -157,3 +165,6 @@ def data_processing_8_data_calculate_click(self):
             item = QTableWidgetItem()
             item.setText(str(data4[j][i]))
             table.setItem(i, j, item)
+
+    param = {data, data3, data4, date, height, diameter, pressure, temp, T, P}
+    write_8_docx(self, param)
