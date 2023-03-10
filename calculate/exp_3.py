@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import r2_score
@@ -137,6 +136,7 @@ def get_pic_3a(self):
         plt.text(np.average(logRe)-0.7,(np.average(logLd)),text,size=12,family="Times new roman",color="black",style='italic',weight='light')
         host.legend()
         plt.show()
+        plt.savefig('./data/img/exp_3_data_1.png')
 
     except:
         QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)
@@ -181,6 +181,8 @@ def get_pic_3b(self):
                  style='italic', weight='light')
         host.legend()
         plt.show()
+
+        plt.savefig('./data/img/exp_3_data_2.png')
     except:
         QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)
         

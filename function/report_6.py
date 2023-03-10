@@ -1,3 +1,5 @@
+import os
+
 import docx
 from PyQt5.QtWidgets import QMessageBox,QFileDialog
 from win32com import client
@@ -86,6 +88,11 @@ def write_docx(self):
                 for j in range(table_column_2):
                     if (self.exp_data_6b.item(i, j) != None):
                         table_2.cell(i + 1, j + 1).text = self.exp_data_6b.item(i, j).text()
+
+            # 导入图片
+            if (os.path.exists('./data/img/exp_6_data.png')):
+                doc.add_paragraph("")
+                doc.add_picture('./data/img/exp_6_data.png')
 
             # 获取保存路径
             file_path = pre_path + '/' + '实验六 综合传热实验.docx'

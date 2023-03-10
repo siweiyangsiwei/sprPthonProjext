@@ -665,11 +665,11 @@ class ExperimentWindow(QMainWindow, Ui_ExperimentWindow):
         # 用来显示时间的秒数，后面转换成时，分，秒形式
         sec = self.sec
         if sec >= 60:
-            self.min += 1
-            sec = sec - 60
+            self.min = sec // 60
+            sec = sec % 60
             if self.min >= 60:
-                self.hour += 1
-                self.min = self.min - 60
+                self.hour = self.min // 60
+                self.min = self.min % 60
         self.lcdNumber.display("{0}:{1}:{2}".format(str(int(self.hour)).rjust(2, '0'), str(int(self.min)).rjust(2, '0'),
                                                     str(int(sec)).rjust(2, '0')))
 

@@ -115,5 +115,6 @@ def get_pic_4(self):
         par2.axis['right2'].line.set_color(p3.get_color())  # 轴的颜色
 
         plt.show()
+        plt.savefig('./data/img/exp_4_data.png')
     except:
         QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)

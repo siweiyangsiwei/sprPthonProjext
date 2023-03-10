@@ -129,5 +129,6 @@ def get_pic_6(self):
                  style='italic', weight='light')
         host.legend()
         plt.show()
+        plt.savefig('./data/img/exp_6_data.png')
     except:
         QMessageBox.critical(self, '错误', '数据错误！', QMessageBox.Ok)

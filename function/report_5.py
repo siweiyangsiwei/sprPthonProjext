@@ -75,7 +75,6 @@ def write_5_docx(self, p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2,
     table2.cell(1, 6).text = str(te1)
     table2.cell(11, 6).text = str(te2)
     table2.cell(21, 6).text = str(te3)
-
     for i in range(10):
         table2.cell(i + 1, 1).text = str(t1[i])
         table2.cell(11 + i, 1).text = str(t2[i])
@@ -87,8 +86,9 @@ def write_5_docx(self, p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2,
         table2.cell(11 + i, 3).text = str(qt2[i])
         table2.cell(21 + i, 3).text = str(qt3[i])
     document.add_paragraph("\n")
-
     document.add_picture('./data/img/exp_5_data_1.png')
+
+
 
     # 保存文件
     pre_path = import_data(self)

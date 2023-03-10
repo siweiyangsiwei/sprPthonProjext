@@ -1,3 +1,5 @@
+import os
+
 import docx
 from PyQt5.QtWidgets import QMessageBox,QFileDialog
 from win32com import client
@@ -24,7 +26,7 @@ def docx2pdf(fn):
 
 # 生成docx文件
 def write_docx(self):
-    # try:
+    try:
         pre_path = import_data(self)
         if pre_path == '':
             pass
@@ -105,6 +107,14 @@ def write_docx(self):
                     if (self.exp_data_3c.item(i, j) != None):
                         table_3.cell(i , j + 1).text = self.exp_data_3c.item(i, j).text()
 
+            # 导入图片
+            if( os.path.exists ('./data/img/exp_3_data_1.png') ):
+                doc.add_paragraph("")
+                doc.add_picture('./data/img/exp_3_data_1.png')
+            if (os.path.exists('./data/img/exp_3_data_2.png')):
+                doc.add_paragraph("")
+                doc.add_picture('./data/img/exp_3_data_2.png')
+
             # 获取保存路径
             file_path = pre_path + '/' + '实验三 流体阻力的测定.docx'
             doc.save(file_path)
@@ -128,5 +138,5 @@ def write_docx(self):
                 print(2)
                 pass
 
-    # except:
-    #     QMessageBox.critical(self, '错误', '导出失败', QMessageBox.Ok)
+    except:
+        QMessageBox.critical(self, '错误', '导出失败', QMessageBox.Ok)
