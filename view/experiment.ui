@@ -387,7 +387,7 @@ QPushBotton:hover{
 </string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>6</number>
                      </property>
                      <widget class="QWidget" name="tab">
                       <attribute name="title">
@@ -852,7 +852,7 @@ QPushBotton:hover{
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QGridLayout" name="gridLayout_7" rowstretch="1,1,1,1" columnstretch="1,1,1">
+                         <layout class="QGridLayout" name="gridLayout_7" rowstretch="1,1,1,1" columnstretch="4,1,4">
                           <item row="2" column="1">
                            <spacer name="verticalSpacer_2">
                             <property name="orientation">
@@ -935,49 +935,31 @@ p, li { white-space: pre-wrap; }
                            </widget>
                           </item>
                           <item row="3" column="1">
-                           <widget class="QFrame" name="frame_6">
+                           <widget class="QPushButton" name="amination_in">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>AcadEref</family>
+                              <pointsize>9</pointsize>
+                              <weight>50</weight>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                              <stylestrategy>PreferDefault</stylestrategy>
+                             </font>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="focusPolicy">
+                             <enum>Qt::StrongFocus</enum>
+                            </property>
                             <property name="styleSheet">
-                             <string notr="true">background-color:transparent;</string>
-                            </property>
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <widget class="QPushButton" name="amination_in">
-                             <property name="geometry">
-                              <rect>
-                               <x>110</x>
-                               <y>10</y>
-                               <width>201</width>
-                               <height>191</height>
-                              </rect>
-                             </property>
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>AcadEref</family>
-                               <pointsize>9</pointsize>
-                               <weight>50</weight>
-                               <italic>false</italic>
-                               <bold>false</bold>
-                               <stylestrategy>PreferDefault</stylestrategy>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::StrongFocus</enum>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">QPushButton{
+                             <string notr="true">QPushButton{
 background-color: rgb(34, 75, 103);
 	border-image: url(:/icons/start.png);
 color: rgb(255,255,255);  
@@ -993,17 +975,16 @@ border-radius: 95px;
 border: 2px groove gray;
 font: 9pt &quot;AcadEref&quot;;
 border-style: outset;}</string>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>20</width>
-                               <height>20</height>
-                              </size>
-                             </property>
-                            </widget>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>20</width>
+                              <height>20</height>
+                             </size>
+                            </property>
                            </widget>
                           </item>
                          </layout>
@@ -3773,7 +3754,7 @@ border-style: outset;}</string>
                              <widget class="QWidget" name="data_processing_5_content">
                               <property name="geometry">
                                <rect>
-                                <x>0</x>
+                                <x>65</x>
                                 <y>0</y>
                                 <width>1121</width>
                                 <height>3000</height>

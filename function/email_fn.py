@@ -17,7 +17,7 @@ def import_data(self):
 # 发送邮件
 def send_email(self):
     host_sever = 'smtp.163.com'  # smtp服务器地址
-    pwd = 'CTRXCFYCQLNNFNBN' # 授权码
+    pwd = 'DGLORTRSWVCWQRKV' # 授权码
     sender = 'yuebeix588441@163.com'
 
     # 获取输入框内容
