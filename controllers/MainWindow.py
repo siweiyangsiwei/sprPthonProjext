@@ -10,6 +10,8 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.run()
+        self.setWindowTitle("化工实验模拟系统")
+
         # 文字居中
         self.label_safe.setAlignment(Qt.AlignCenter)
         self.label_end.setAlignment(Qt.AlignCenter)

@@ -8,6 +8,8 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
         super(LoginWindow, self).__init__()
         self.setupUi(self)
         self.pushButton.clicked.connect(self.login)
+        self.setWindowTitle("登录")
+
 
     def login(self):
         user = self.user_lineedit.text()
