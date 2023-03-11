@@ -7,24 +7,13 @@ def import_data(self):
     file_path = QFileDialog.getExistingDirectory()
     return file_path
 
-
-# 转换docx为pdf
-def docx2pdf(fn):
-    word = client.Dispatch("Word.Application")  # 打开word应用程序
-    # for file in files:
-    doc = word.Documents.Open(fn)  # 打开word文件
-    doc.SaveAs("{}.pdf".format(fn[:-5]), 17)  # 另存为后缀为".pdf"的文件，其中参数17表示为pdf
-    doc.Close()  # 关闭原来word文件
-    word.Quit()
-
-
 def write_5_docx(self, p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2, qe3, te1, te2, te3, qt1, qt2, qt3, s,
                  r, V, u, date, area, temp, q1, q2, q3):
     # 实验报告
     document = Document('./resources/report/实验五 恒压过滤实验.docx')
-    document.add_paragraph('实验日期' + date + "\t室温" + temp + "\t过滤面积" + area +
-                           "\t滤渣压缩系数" + s + "\t滤液的粘度" + u +
-                           "\t滤渣比阻" + r + "\t单位滤液体积的滤渣体积" + V)
+    document.add_paragraph('实验日期' + str(date) + "\t室温" + str(temp) + "\t过滤面积" + str(area) +
+                           "\t滤渣压缩系数" + str(s) + "\t滤液的粘度" + str(u) +
+                           "\t滤渣比阻" + str(r) + "\t单位滤液体积的滤渣体积" + str(V))
     document.add_paragraph("                表1 数据记录表")
     table1 = document.add_table(30 + 1, 3, style='Table Grid')
 
@@ -94,27 +83,4 @@ def write_5_docx(self, p1, p2, p3, t1, t2, t3, g1, g2, g3, K1, K2, K3, qe1, qe2,
     pre_path = import_data(self)
     file_path = pre_path + '/' + '实验五 恒压过滤实验.docx'
     document.save(file_path)
-
-    # 创建一个问答框
-    self.box = QMessageBox(QMessageBox.Question, '提示', 'docx文件已保存，是否转换成pdf文件？')
-
-    # 添加按钮
-    yes = self.box.addButton('确定', QMessageBox.YesRole)
-    no = self.box.addButton('取消', QMessageBox.NoRole)
-
-    # 显示该问答框
-    self.box.exec_()
-
-
-
-    if self.box.clickedButton() == yes:
-        try:
-            print(1)
-            # docx转pdf
-            docx2pdf(file_path)
-            QMessageBox.information(self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
-        except:
-            QMessageBox.information(self, '提示', '生成pdf文件出错！', QMessageBox.Ok)
-    else:
-        print(2)
-        pass
+    QMessageBox.information(self, '提示', '导出成功', QMessageBox.Ok)

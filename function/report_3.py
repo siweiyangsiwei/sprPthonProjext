@@ -15,15 +15,6 @@ def import_data(self):
     file_path = QFileDialog.getExistingDirectory()
     return file_path
 
-# 转换docx为pdf
-def docx2pdf(fn):
-    word = client.Dispatch("Word.Application")  # 打开word应用程序
-    # for file in files:
-    doc = word.Documents.Open(fn)  # 打开word文件
-    doc.SaveAs("{}.pdf".format(fn[:-5]), 17)  # 另存为后缀为".pdf"的文件，其中参数17表示为pdf
-    doc.Close()  # 关闭原来word文件
-    word.Quit()
-
 # 生成docx文件
 def write_docx(self):
     try:
@@ -118,25 +109,7 @@ def write_docx(self):
             # 获取保存路径
             file_path = pre_path + '/' + '实验三 流体阻力的测定.docx'
             doc.save(file_path)
-
-            # 创建一个问答框
-            self.box = QMessageBox(QMessageBox.Question, '提示', 'docx文件已保存，是否转换成pdf文件？')
-
-            # 添加按钮
-            yes = self.box.addButton('确定', QMessageBox.YesRole)
-            no = self.box.addButton('取消', QMessageBox.NoRole)
-
-            # 显示该问答框
-            self.box.exec_()
-
-            if self.box.clickedButton() == yes:
-                print(1)
-                # docx转pdf
-                docx2pdf(file_path)
-                QMessageBox.information(self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
-            else:
-                print(2)
-                pass
+            QMessageBox.information(self,'提示','导出成功',QMessageBox.Ok)
 
     except:
         QMessageBox.critical(self, '错误', '导出失败', QMessageBox.Ok)

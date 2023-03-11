@@ -7,22 +7,11 @@ def import_data(self):
     file_path = QFileDialog.getExistingDirectory()
     return file_path
 
-
-# 转换docx为pdf
-def docx2pdf(fn):
-    word = client.Dispatch("Word.Application")  # 打开word应用程序
-    # for file in files:
-    doc = word.Documents.Open('./resource/report/实验五 恒压过滤实验.docx')  # 打开word文件
-    doc.SaveAs("{}.pdf".format(fn[:-5]), 17)  # 另存为后缀为".pdf"的文件，其中参数17表示为pdf
-    doc.Close()  # 关闭原来word文件
-    word.Quit()
-
-
 def write_8_docx(self, data, data3, data4, date, height, diameter, pressure, temp, T, P):
     # 生成实验报告
     document = Document('./resources/report/实验八 吸收-解吸实验.docx')
 
-    document.add_paragraph('实验日期' + date + "\t填料层高度" + str(height) +
+    document.add_paragraph('实验日期' + str(date) + "\t填料层高度" + str(height) +
                            "\t塔内径" + str(diameter) +
                            "\t大气压" + str(pressure) + "\t室温" + str(temp) +
                            "\t流量计标定状态:T=" + str(T) + " P=" + str(P))
@@ -82,25 +71,4 @@ def write_8_docx(self, data, data3, data4, date, height, diameter, pressure, tem
     pre_path = import_data(self)
     file_path = pre_path + '/' + '实验八 吸收-解吸实验.docx'
     document.save(file_path)
-
-    # 创建一个问答框
-    self.box = QMessageBox(QMessageBox.Question, '提示', 'docx文件已保存，是否转换成pdf文件？')
-
-    # 添加按钮
-    yes = self.box.addButton('确定', QMessageBox.YesRole)
-    no = self.box.addButton('取消', QMessageBox.NoRole)
-
-    # 显示该问答框
-    self.box.exec_()
-
-    if self.box.clickedButton() == yes:
-        try:
-            print(1)
-            # docx转pdf
-            docx2pdf(file_path)
-            QMessageBox.information(self, '提示', '成功生成pdf文件！', QMessageBox.Ok)
-        except:
-            QMessageBox.information(self, '提示', '生成pdf文件出错！', QMessageBox.Ok)
-    else:
-        print(2)
-        pass
+    QMessageBox.information(self, '提示', '导出成功', QMessageBox.Ok)
