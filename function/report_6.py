@@ -1,8 +1,6 @@
 import os
-
 import docx
 from PyQt5.QtWidgets import QMessageBox,QFileDialog
-from win32com import client
 
 # 实验二 导出实验报告
 

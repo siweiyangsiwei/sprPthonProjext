@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
-from win32com import client
 from docx import Document
 
 
