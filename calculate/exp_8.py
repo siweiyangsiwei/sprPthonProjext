@@ -6,7 +6,7 @@ from PyQt5 import QtGui
 import matplotlib.pyplot as plt
 from docx import Document
 
-from function.report_8 import write_8_docx
+from report.report_8 import write_8_docx
 
 
 def data_processing_8_data_calculate_click(self):

@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow
 from view.main_window import Ui_MainWindow
 from controllers.ExperimentWindow import ExperimentWindow
-from function import safe_test_fn
-from tools import SqlTools
+from tools import SqlTools, safe_test_tool
 from PyQt5.QtCore import Qt
 
 class MainWindow(QMainWindow,Ui_MainWindow):

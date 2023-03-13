@@ -1371,14 +1371,14 @@ border: none;
      <x>0</x>
      <y>0</y>
      <width>1176</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="srpresources.qrc"/>
+  <include location="../srpresources/res.qrc"/>
  </resources>
  <connections/>
 </ui>

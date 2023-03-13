@@ -1156,7 +1156,7 @@ class Ui_Form(object):
         self.bg104 = QtWidgets.QLabel(self.simulation_10)
         self.bg104.setGeometry(QtCore.QRect(45, 65, 611, 351))
         self.bg104.setText("")
-        self.bg104.setPixmap(QtGui.QPixmap("../../../../大学/srp/丘悦/代码/素材/实验图模拟用/10s.png"))
+        self.bg104.setPixmap(QtGui.QPixmap("../resources/simulation/10s.png"))
         self.bg104.setScaledContents(True)
         self.bg104.setObjectName("bg104")
         self.n2_open_rate10 = QtWidgets.QSpinBox(self.simulation_10)
@@ -1280,6 +1280,7 @@ class Ui_Form(object):
         self.verticalStackedWidget.addWidget(self.simulation_10)
 
         self.retranslateUi(Form)
+        self.verticalStackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -1410,14 +1411,3 @@ class Ui_Form(object):
         self.label_58.setText(_translate("Form", "富氮气调节阀开度"))
         self.close_airin10.setText(_translate("Form", "关阀11"))
 import simulation_rc
-import srpresources_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())

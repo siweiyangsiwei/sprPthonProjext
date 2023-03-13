@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 from PyQt5 import QtGui
 import matplotlib.pyplot as plt
 
-from function.report_5 import write_5_docx
+from report.report_5 import write_5_docx
 
 
 # 第五章的数据处理部分

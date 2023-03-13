@@ -8,7 +8,7 @@ from view.experiment import Ui_ExperimentWindow
 from controllers.EmailWindow import EmailWindow
 from controllers.Simulation import Simulation
 from tools import SqlTools
-from function import report_1, report_2, report_3, report_4, report_6
+from report import report_1, report_2, report_3, report_4, report_6
 from calculate import exp_1, exp_2, exp_3, exp_4, exp_5, exp_6, exp_7, exp_8, exp_9
 
 

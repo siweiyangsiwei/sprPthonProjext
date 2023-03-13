@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QMainWindow,QLabel
+from PyQt5.QtWidgets import QMainWindow
 from view.email_window import Ui_emailWindow
-import function.email_fn as email_fn
+import tools.email_tool as email_fn
 
 class EmailWindow(QMainWindow, Ui_emailWindow):
     def __init__(self):

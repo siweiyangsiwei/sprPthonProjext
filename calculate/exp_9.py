@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 from docx import Document
 
-from function.report_9 import write_9_docx
+from report.report_9 import write_9_docx
 
 
 def data_processing_9_data_calculate_click(self):

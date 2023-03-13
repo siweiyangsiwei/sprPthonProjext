@@ -16,6 +16,7 @@
     <file>孟菲斯-斜立方体.png</file>
   </qresource>
   <qresource prefix="experiment">
+    <file>10s.png</file>
     <file>1s.png</file>
     <file>2s.png</file>
     <file>3s.png</file>

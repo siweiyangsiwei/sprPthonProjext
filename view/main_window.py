@@ -633,7 +633,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.frame)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1176, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1176, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -714,4 +714,4 @@ class Ui_MainWindow(object):
         item = self.table_result.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "正确率"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.mine), _translate("MainWindow", "我的"))
-import srpresources_rc
+import res_rc

@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="images">
-    <file>srpresources/scut.png</file>
-  </qresource>
-  <qresource prefix="icons">
-    <file>close.png</file>
-  </qresource>
-</RCC>

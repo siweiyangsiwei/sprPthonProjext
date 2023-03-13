@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
-from function.report_7 import write_7_docx
+from report.report_7 import write_7_docx
 
 
 def data_processing_7_data_calculate_click(self):
