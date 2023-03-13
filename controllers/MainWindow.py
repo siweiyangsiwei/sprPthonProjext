@@ -26,16 +26,16 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         # 开始答题按钮
         self.start_btn.clicked.connect(self.start_safe_test)
         # 下一题按钮
-        self.next_btn.clicked.connect(lambda: safe_test_fn.test_update(self))
+        self.next_btn.clicked.connect(lambda: safe_test_tool.test_update(self))
         # 返回按钮
         self.back_btn.clicked.connect(self.show_initial)
         # 设置初始页面
         self.stackedWidget.setCurrentIndex(0)
         
-        self.answer_1.clicked.connect(lambda: safe_test_fn.answer_1_clicked(self))
-        self.answer_2.clicked.connect(lambda: safe_test_fn.answer_2_clicked(self))
-        self.answer_3.clicked.connect(lambda: safe_test_fn.answer_3_clicked(self))
-        self.answer_4.clicked.connect(lambda: safe_test_fn.answer_4_clicked(self))
+        self.answer_1.clicked.connect(lambda: safe_test_tool.answer_1_clicked(self))
+        self.answer_2.clicked.connect(lambda: safe_test_tool.answer_2_clicked(self))
+        self.answer_3.clicked.connect(lambda: safe_test_tool.answer_3_clicked(self))
+        self.answer_4.clicked.connect(lambda: safe_test_tool.answer_4_clicked(self))
 
     def run(self):
         # 双击打开实验窗口
@@ -120,7 +120,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.correct_num = 0
         # 记录答题数
         self.now_num = 1
-        safe_test_fn.show_test(self)
+        safe_test_tool.show_test(self)
 
     # 显示实验安全初始页面
     def show_initial(self):
